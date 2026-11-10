@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shelf · Ved Agwekar</title>
+  <meta name="description" content="every book on ved agwekar's shelf." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&family=Shantell+Sans:wght@400..600&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=31" />
+</head>
+<body>
+  <main class="shelf-page">
+    <section>
+      <a class="shelf-more back" href="index.html#shelf-sec"><svg viewBox="0 0 36 16" width="36" height="16" aria-hidden="true"><path filter="url(#rough)" d="M34 8C25 6 15 9 4 7M11 2 3 7l7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> back</a>
+      <h1 class="shelf-head">shelf</h1>
+      <div class="shelf" id="shelf"></div>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/></filter></svg>
+    </section>
+  </main>
+
+  <dialog class="pop" id="pop" aria-labelledby="pop-body">
+    <div class="pop-card">
+      <button class="pop-x" type="button" data-pop-close aria-label="close">✕</button>
+      <div id="pop-body"></div>
+    </div>
+  </dialog>
+
+  <script type="module">
+    import { mountShelf } from "./js/shelf.js?v=31";
+    mountShelf(document.getElementById("shelf"), { rows: 4, noteBase: "index.html" });
+  </script>
+</body>
+</html>
