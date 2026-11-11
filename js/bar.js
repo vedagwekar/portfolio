@@ -2,6 +2,7 @@
 // - over the photo it's see-through; once you scroll past, it gets a background and shows your name
 // - the link for the section you're reading is underlined
 // - on phones the links fold into a "menu" button
+// - "contact" opens a small card with your email and resume
 export function bar() {
   const nav = document.getElementById("bar");
   if (!nav) return;
@@ -14,6 +15,30 @@ export function bar() {
   btn.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
   nav.addEventListener("click", (e) => { if (e.target.closest(".bar-links a")) setOpen(false); });
   addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+
+  // the contact dropdown: email (copy / send) and resume
+  const cbtn = nav.querySelector(".bar-cbtn"), card = nav.querySelector(".contact-card");
+  if (cbtn) {
+    const setCard = (open) => { card.classList.toggle("open", open); cbtn.setAttribute("aria-expanded", open); };
+    cbtn.addEventListener("click", (e) => { e.stopPropagation(); setCard(!card.classList.contains("open")); });
+    document.addEventListener("click", (e) => { if (!e.target.closest(".bar-contact") || e.target.closest(".contact-card a")) setCard(false); });
+    addEventListener("keydown", (e) => { if (e.key === "Escape") setCard(false); });
+    card.querySelector("[data-copy]")?.addEventListener("click", async (e) => {
+      const b = e.currentTarget;
+      let ok = false;
+      try { await navigator.clipboard.writeText(b.dataset.copy); ok = true; }
+      catch {
+        // older browsers, or ones that block the clipboard API: copy through a hidden text box
+        const t = Object.assign(document.createElement("textarea"), { value: b.dataset.copy });
+        t.style.cssText = "position:fixed;opacity:0";
+        document.body.append(t); t.select();
+        try { ok = document.execCommand("copy"); } catch {}
+        t.remove();
+      }
+      b.textContent = ok ? "copied" : "couldn't copy";
+      setTimeout(() => { b.textContent = "copy"; }, 1600);
+    });
+  }
 
   // solid as soon as you scroll, so it never sits on top of the photo's text;
   // your name shows in it once the big name on the photo is gone

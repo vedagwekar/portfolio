@@ -1,10 +1,10 @@
 // Everything on the page that isn't the hero photo. Essays live in js/books.js + notes/<id>.md.
-import { ENTRIES } from "./books.js?v=43";
-import { mountShelf } from "./shelf.js?v=43";
-import { esc, dlg, popup } from "./popup.js?v=43";
-import { pixelHero } from "./hero.js?v=43";
-import { bar } from "./bar.js?v=43";
-import { githubGraph } from "./github.js?v=43";
+import { ENTRIES } from "./books.js?v=50";
+import { mountShelf } from "./shelf.js?v=50";
+import { esc, dlg, popup } from "./popup.js?v=50";
+import { asciiHero } from "./hero.js?v=50";
+import { bar } from "./bar.js?v=50";
+import { githubGraph } from "./github.js?v=50";
 
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -206,13 +206,4 @@ notebook();
 route();
 githubGraph({ head: $("gh-head"), graph: $("gh-graph"), caption: $("gh-day") });
 
-// copy button next to the email address
-document.addEventListener("click", async (e) => {
-  const b = e.target.closest("[data-copy]");
-  if (!b) return;
-  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "copied"; }
-  catch { b.textContent = "couldn't copy"; }
-  setTimeout(() => { b.textContent = "copy"; }, 1600);
-});
-
-pixelHero($("photo"), { reduced }).catch((err) => console.warn("photo unavailable", err));
+asciiHero($("photo"), { reduced }).catch((err) => console.warn("photo unavailable", err));
