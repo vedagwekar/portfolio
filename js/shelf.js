@@ -1,17 +1,17 @@
-// Draws a shelf of drawn spines. The home page shows the first row; shelf.html shows every book
+// Draws a shelf of plain spines. The home page shows the first row; shelf.html shows every book
 // and fills the rest of the shelves with dashed placeholders. A new line in js/books.js takes the next empty slot.
-import { ENTRIES } from "./books.js?v=42";
-import { spineSvg } from "./spines.js?v=42";
-import { esc, popup } from "./popup.js?v=42";
+import { ENTRIES } from "./books.js?v=43";
+import { spine } from "./spines.js?v=43";
+import { esc, popup } from "./popup.js?v=43";
 
-const SLOT = 64;   // 62px spine + 2px gap
+const SLOT = 50;   // 46px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);
 
 export function mountShelf(el, { limit = Infinity, rows = 0, noteBase = "" } = {}) {
   const books = all.slice(0, limit);
   const perRow = () => {
     const cs = getComputedStyle(el), inner = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-    return Math.max(1, Math.floor((inner + 2) / SLOT));
+    return Math.max(1, Math.floor((inner + 4) / SLOT));
   };
   let drawn = 0;
   const draw = () => {
@@ -24,8 +24,8 @@ export function mountShelf(el, { limit = Infinity, rows = 0, noteBase = "" } = {
     for (let i = 0; i < total; i++) {
       const b = books[i];
       html += b
-        ? `<div class="slot"><button type="button" class="spine" data-i="${i}" aria-haspopup="dialog" aria-label="${esc(b.title)}">${spineSvg(b, i)}</button></div>`
-        : `<div class="slot" aria-hidden="true">${spineSvg({}, i)}</div>`;
+        ? `<div class="slot"><button type="button" class="spine" data-i="${i}" aria-haspopup="dialog" aria-label="${esc(b.title)}">${spine(b, i)}</button></div>`
+        : `<div class="slot" aria-hidden="true">${spine({}, i)}</div>`;
     }
     el.innerHTML = html;
   };

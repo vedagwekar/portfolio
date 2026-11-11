@@ -1,10 +1,10 @@
 // Everything on the page that isn't the hero photo. Essays live in js/books.js + notes/<id>.md.
-import { ENTRIES } from "./books.js?v=42";
-import { mountShelf } from "./shelf.js?v=42";
-import { esc, dlg, popup } from "./popup.js?v=42";
-import { pixelHero } from "./hero.js?v=42";
-import { bar } from "./bar.js?v=42";
-import { githubGraph } from "./github.js?v=42";
+import { ENTRIES } from "./books.js?v=43";
+import { mountShelf } from "./shelf.js?v=43";
+import { esc, dlg, popup } from "./popup.js?v=43";
+import { pixelHero } from "./hero.js?v=43";
+import { bar } from "./bar.js?v=43";
+import { githubGraph } from "./github.js?v=43";
 
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
