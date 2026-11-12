@@ -1,7 +1,7 @@
 // The github contribution grid. Data comes from a free public API that reads your github profile,
 // so there's nothing to update by hand: commit, and the squares fill in.
 const USER = "vedagwekar";   // ✏️ your github username
-const WEEKS = 26;           // ✏️ how many weeks the grid shows (26 is about six months)
+const WEEKS = 52;           // ✏️ how many weeks the grid shows (26 is about six months)
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
 const day = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d)); };
