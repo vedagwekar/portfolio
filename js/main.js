@@ -1,44 +1,27 @@
 // Everything on the page that isn't the hero photo. Essays live in js/books.js + notes/<id>.md.
-import { ENTRIES } from "./books.js?v=50";
-import { mountShelf } from "./shelf.js?v=50";
-import { esc, dlg, popup } from "./popup.js?v=50";
-import { asciiHero } from "./hero.js?v=50";
-import { bar } from "./bar.js?v=50";
-import { githubGraph } from "./github.js?v=50";
+import { ENTRIES } from "./books.js?v=57";
+import { mountShelf } from "./shelf.js?v=57";
+import { esc, dlg, popup } from "./popup.js?v=57";
+import { asciiHero } from "./hero.js?v=57";
+import { bar } from "./bar.js?v=57";
+import { githubGraph } from "./github.js?v=57";
+import { WORK } from "./work.js?v=57";
 
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const isGit = (u) => u?.includes("github.com");
-const linkText = (u) => (isGit(u) ? "github ↗" : undefined);
 
-// ---------- ✏️ the words ----------
-const WORK = [
-  { name: "waterloo aerial robotics", what: "embedded flight software", when: "nov 2026 →", more: "writing sensor drivers in c/c++ for our drone autopilot." },
-  { name: "sustainable physical ai society", what: "perception and vision", when: "sep 2026 →", more: "computer vision for a strawberry-farm robot, telling crops from weeds. also looking at thermal sensing to catch frost early." },
-  { name: "youth policy council", what: "full stack developer", when: "sep 2025 →", url: "https://youthpolicycouncil.ca", more: "i built the site and maintain it on my own. next.js, supabase and 190+ tests." },
-];
-const BUILT = [
-  { name: "lightning response", what: "hackathon winner", when: "sep 2026", url: "https://github.com/shan-d-louis/formulatechhacks", more: "an ai pit wall for f1 tyres, trained on 138,683 laps. run against hamilton's silverstone 2020 failure, it gave a warning 15 laps early." },
-  { name: "cetr index", what: "open source", when: "python", url: "https://github.com/vedagwekar/cetr-index", more: "ranks which canadian provinces are most exposed to the move off fossil fuels, and tests whether the ranking holds up under different methods." },
-  { name: "home ml server", what: "homelab", when: "2026 →", more: "an old gaming laptop wiped and running headless debian. the goal is to have it training models around the clock." },
-];
+// colours for the essay reader's opening cover
 const COVERS = ["#3c5a49", "#7d2f2b", "#2c3c58", "#bd9440", "#553a50", "#34625f"];
 
-// ---------- experience: each row opens a popup ----------
-function toc() {
-  const row = (x, group) => `<li${isGit(x.url) ? ' class="linked"' : ""}>
-    <button class="row" type="button" aria-haspopup="dialog" data-g="${group}" data-i="${x.i}">
-      <span class="nm">${esc(x.name)}</span><span class="wh">${esc(x.what)}</span><span class="dots" aria-hidden="true"></span><span class="pg">${esc(x.when)}</span>
-    </button>${isGit(x.url) ? `<a class="git" href="${x.url}" rel="noopener">github ↗</a>` : ""}
-  </li>`;
-  $("toc-work").innerHTML = WORK.map((x, i) => row({ ...x, i }, "w")).join("");
-  $("toc-built").innerHTML = BUILT.map((x, i) => row({ ...x, i }, "b")).join("");
-  document.querySelector(".toc").addEventListener("click", (e) => {
-    const b = e.target.closest(".row");
+// ---------- work: the linked phrases in the about section open a popup ----------
+function workLinks() {
+  document.getElementById("about").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-work]");
     if (!b) return;
-    const x = (b.dataset.g === "w" ? WORK : BUILT)[+b.dataset.i];
-    popup({ kicker: `${x.what} · ${x.when}`, title: x.name, body: x.more, url: x.url, urlText: linkText(x.url) });
+    e.preventDefault();
+    const x = WORK[+b.dataset.work];
+    popup({ kicker: `${x.what} · ${x.when}`, title: x.name, body: x.more, url: x.url, urlText: x.url ? `${new URL(x.url).hostname.replace(/^www\./, "")} ↗` : undefined });
   });
 }
 
@@ -201,7 +184,7 @@ addEventListener("hashchange", route);
 history.scrollRestoration = "manual";
 bar();
 mountShelf($("shelf"), { limit: 9 });
-toc();
+workLinks();
 notebook();
 route();
 githubGraph({ head: $("gh-head"), graph: $("gh-graph"), caption: $("gh-day") });

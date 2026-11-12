@@ -40,6 +40,36 @@ export function bar() {
     });
   }
 
+  // keep the address bar clean: links to a section on this page scroll there without adding
+  // "#about" etc. to the url, and arriving from another page at "/#about" tidies it back to "/"
+  const smooth = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const sectionFor = (hash) => (hash.length > 1 && !hash.startsWith("#note/") ? document.getElementById(decodeURIComponent(hash.slice(1))) : null);
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href*='#']");
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const url = new URL(a.href);
+    if (url.pathname !== location.pathname) return;
+    const el = sectionFor(url.hash);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: smooth });
+  });
+  const arrived = sectionFor(location.hash);
+  if (arrived) {
+    history.replaceState(null, "", location.pathname + location.search);
+    // land on the section once the page has loaded, and keep it in place for a couple of
+    // seconds while late content (the github grid) fills in above it, unless you start scrolling
+    addEventListener("load", () => {
+      const go = () => arrived.scrollIntoView({ behavior: "instant" });
+      go();
+      const ro = new ResizeObserver(go);
+      ro.observe(document.body);
+      const stop = () => { ro.disconnect(); removeEventListener("wheel", stop); removeEventListener("touchstart", stop); removeEventListener("keydown", stop); };
+      addEventListener("wheel", stop, { passive: true }); addEventListener("touchstart", stop, { passive: true }); addEventListener("keydown", stop);
+      setTimeout(stop, 2500);
+    }, { once: true });
+  }
+
   // solid as soon as you scroll, so it never sits on top of the photo's text;
   // your name shows in it once the big name on the photo is gone
   const stage = document.querySelector(".stage");

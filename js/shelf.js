@@ -1,8 +1,8 @@
-// Draws a shelf of plain spines. The home page shows the first row; shelf.html shows every book
+// Draws a shelf of plain spines. The home page shows the first row; the full shelf page (/shelf) shows every book
 // and fills the rest of the shelves with dashed placeholders. A new line in js/books.js takes the next empty slot.
-import { ENTRIES } from "./books.js?v=50";
-import { spine } from "./spines.js?v=50";
-import { esc, popup } from "./popup.js?v=50";
+import { ENTRIES } from "./books.js?v=57";
+import { spine } from "./spines.js?v=57";
+import { esc, popup } from "./popup.js?v=57";
 
 const SLOT = 50;   // 46px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);

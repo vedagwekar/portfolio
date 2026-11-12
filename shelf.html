@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shelf · Ved Agwekar</title>
   <meta name="description" content="every book on ved agwekar's shelf." />
+  <link rel="icon" href="/assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=50" />
+  <link rel="stylesheet" href="styles.css?v=57" />
 </head>
 <body>
   <nav class="bar solid" id="bar" aria-label="quick links">
-    <a class="bar-name" href="index.html">ved agwekar</a>
+    <a class="bar-name" href="/">ved agwekar</a>
     <button class="bar-menu" type="button" aria-expanded="false" aria-controls="bar-links">menu</button>
     <div class="bar-links" id="bar-links">
-      <a href="index.html#experience">experience</a><a href="shelf.html" aria-current="page">shelf</a><a href="index.html#notebook">notebook</a><div class="bar-contact">
+      <a href="/">home</a><a href="/#about">about</a><a href="/projects">projects</a><a href="/shelf" aria-current="page">shelf</a><a href="/#notebook">notebook</a><div class="bar-contact">
         <button class="bar-cbtn" type="button" aria-expanded="false" aria-controls="contact-card">contact <span class="chev" aria-hidden="true">▾</span></button>
         <div class="contact-card" id="contact-card">
           <small>email is best</small>
@@ -30,7 +31,7 @@
   </nav>
   <main class="shelf-page">
     <section>
-      <a class="shelf-more back" href="index.html#shelf-sec"><span aria-hidden="true">←</span> back</a>
+      <a class="shelf-more back" href="/#shelf-sec"><span aria-hidden="true">←</span> back</a>
       <h1 class="shelf-head">shelf</h1>
       <div class="shelf" id="shelf"></div>
     </section>
@@ -44,10 +45,10 @@
   </dialog>
 
   <script type="module">
-    import { mountShelf } from "./js/shelf.js?v=50";
-    import { bar } from "./js/bar.js?v=50";
+    import { mountShelf } from "./js/shelf.js?v=57";
+    import { bar } from "./js/bar.js?v=57";
     bar();
-    mountShelf(document.getElementById("shelf"), { rows: 4, noteBase: "index.html" });
+    mountShelf(document.getElementById("shelf"), { rows: 4, noteBase: "/" });
   </script>
 </body>
 </html>
