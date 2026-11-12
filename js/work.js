@@ -3,8 +3,8 @@
 // PROJECTS is the list on projects.html and the "what i've built" list on the about page, in the order shown.
 
 export const WORK = [
-  { name: "waterloo aerial robotics", what: "embedded flight software", when: "nov 2026 →", more: "writing sensor drivers in c/c++ for our drone autopilot." },
-  { name: "sustainable physical ai society", what: "perception and vision", when: "sep 2026 →", more: "computer vision for a strawberry-farm robot, telling crops from weeds. also looking at thermal sensing to catch frost early." },
+  { name: "waterloo aerial robotics", what: "embedded flight software", when: "nov 2026 →", url: "https://www.uwarg.com", more: "writing sensor drivers in c/c++ for our drone autopilot." },
+  { name: "sustainable physical ai society", what: "perception and vision", when: "sep 2026 →", url: "https://spais.win", more: "computer vision for a strawberry-farm robot, telling crops from weeds. also looking at thermal sensing to catch frost early." },
   { name: "youth policy council", what: "full stack developer", when: "sep 2025 →", url: "https://youthpolicycouncil.ca", more: "i built the site and maintain it on my own. next.js, supabase and 190+ tests." },
 ];
 

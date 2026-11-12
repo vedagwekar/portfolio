@@ -1,9 +1,9 @@
 // Draws the shelf of plain spines on /shelf. It uses as many shelves as the books need (at least one), and fills
 // the end of the last shelf with dashed placeholders. A new line in js/books.js takes the next empty slot, and a
 // new shelf appears once the last one is full.
-import { ENTRIES } from "./books.js?v=82";
-import { spine } from "./spines.js?v=82";
-import { esc, popup } from "./popup.js?v=82";
+import { ENTRIES } from "./books.js?v=85";
+import { spine } from "./spines.js?v=85";
+import { esc, popup } from "./popup.js?v=85";
 
 const SLOT = 50;   // 46px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);

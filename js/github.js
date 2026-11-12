@@ -1,7 +1,7 @@
 // The github contribution grid. Data comes from a free public API that reads your github profile,
 // so there's nothing to update by hand: commit, and the squares fill in.
 const USER = "vedagwekar";   // ✏️ your github username
-const WEEKS = 52;           // ✏️ how many weeks the grid shows (26 is about six months)
+const WEEKS = 52;           // ✏️ weeks shown on wide screens (52 is a year, 26 about six months); phones show at most 26
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
 const day = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d)); };
@@ -10,7 +10,7 @@ const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
 
 export async function githubGraph({ head, graph, caption }) {
   // hold the grid's space while it loads, so the text below it doesn't jump
-  const w = graph.clientWidth, wk = WEEKS;
+  const w = graph.clientWidth, wk = w < 520 ? Math.min(WEEKS, 26) : WEEKS;
   graph.style.minHeight = `${18 + 7 * ((w - (wk - 1) * 3) / wk) + 18}px`;
   let days;
   try {
@@ -27,7 +27,7 @@ export async function githubGraph({ head, graph, caption }) {
 
   let shownWeeks = 0;
   const draw = () => {
-    const weeks = WEEKS;
+    const weeks = graph.clientWidth < 520 ? Math.min(WEEKS, 26) : WEEKS;
     if (weeks === shownWeeks) return;
     shownWeeks = weeks;
 
@@ -37,7 +37,7 @@ export async function githubGraph({ head, graph, caption }) {
     const cells = days.slice(Math.max(0, days.length - (weeks * 7 - endPad)));
     const startPad = day(cells[0].date).getUTCDay();
     const total = cells.reduce((n, c) => n + c.count, 0);
-    head.textContent = `${plural(total, "contribution")} in the last six months`;
+    head.textContent = `${plural(total, "contribution")} in the last ${weeks >= 52 ? "year" : weeks === 26 ? "six months" : `${weeks} weeks`}`;
 
     // month names over the week where each month starts
     let months = "", lastCol = -9;

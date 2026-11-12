@@ -1,7 +1,7 @@
 // The home page: the hero photo and the github grid.
-import { asciiHero } from "./hero.js?v=82";
-import { bar } from "./bar.js?v=82";
-import { githubGraph } from "./github.js?v=82";
+import { asciiHero } from "./hero.js?v=85";
+import { bar } from "./bar.js?v=85";
+import { githubGraph } from "./github.js?v=85";
 
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
