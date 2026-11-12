@@ -164,11 +164,12 @@ main.projects-page { max-width: 760px; padding-top: calc(var(--bar) + 10px); pad
 .gh-cells i[data-t]:hover { outline: 1.5px solid var(--ink); outline-offset: 1px; }
 .gh-foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 18px; margin-top: 10px; font: 14px var(--sans); color: var(--muted); }
 .gh-foot a { color: var(--ink); }
-.stage .gh { margin-top: clamp(16px, 3vh, 30px); }
+.stage .gh { margin-top: clamp(12px, 2.2vh, 30px); }
 .stage .gh > h2 { color: var(--dim); margin-bottom: 8px; font-size: 16px; }
 .stage .gh > h2::before { background: var(--hl); }
 .stage .gh-head { margin-bottom: 8px !important; font-size: 16px; }
 .stage .gh-foot { font-size: 15px; }
+.stage .gh-graph { max-width: 300px; }
 .stage .gh-months { font-size: 12.5px; }
 .stage .gh-months, .stage .gh-foot { color: var(--dim); }
 .stage .gh-foot a { color: var(--cream); }
