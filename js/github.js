@@ -8,6 +8,9 @@ const nice = (s) => { const t = day(s); return `${MONTHS[t.getUTCMonth()]} ${t.g
 const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
 
 export async function githubGraph({ head, graph, caption }) {
+  // hold the grid's space while it loads, so the text below it doesn't jump
+  const w = graph.clientWidth, wk = w < 520 ? 26 : 53;
+  graph.style.minHeight = `${18 + 7 * ((w - (wk - 1) * 3) / wk) + 18}px`;
   let days;
   try {
     const r = await fetch(`https://github-contributions-api.jogruber.de/v4/${USER}?y=last`);
@@ -16,6 +19,7 @@ export async function githubGraph({ head, graph, caption }) {
   } catch (err) {
     head.innerHTML = `couldn't load the grid right now. <a href="https://github.com/${USER}" rel="noopener">see it on github ↗</a>`;
     graph.hidden = true;
+    graph.style.minHeight = "";
     caption.parentElement.hidden = true;
     return;
   }
@@ -55,6 +59,7 @@ export async function githubGraph({ head, graph, caption }) {
     graph.setAttribute("aria-label", head.textContent);
   };
   draw();
+  graph.style.minHeight = "";
   new ResizeObserver(draw).observe(graph);
 
   if (matchMedia("(hover: none)").matches) caption.textContent = "tap a square to see that day.";

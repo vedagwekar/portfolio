@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shelf · Ved Agwekar</title>
   <meta name="description" content="every book on ved agwekar's shelf." />
-  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png?v=2" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=57" />
+  <link rel="stylesheet" href="styles.css?v=79" />
 </head>
 <body>
   <nav class="bar solid" id="bar" aria-label="quick links">
     <a class="bar-name" href="/">ved agwekar</a>
     <button class="bar-menu" type="button" aria-expanded="false" aria-controls="bar-links">menu</button>
     <div class="bar-links" id="bar-links">
-      <a href="/">home</a><a href="/#about">about</a><a href="/projects">projects</a><a href="/shelf" aria-current="page">shelf</a><a href="/#notebook">notebook</a><div class="bar-contact">
+      <a href="/">home</a><a href="/about">about</a><a href="/projects">projects</a><a href="/shelf" aria-current="page">shelf</a><div class="bar-contact">
         <button class="bar-cbtn" type="button" aria-expanded="false" aria-controls="contact-card">contact <span class="chev" aria-hidden="true">▾</span></button>
         <div class="contact-card" id="contact-card">
           <small>email is best</small>
@@ -30,10 +31,18 @@
     </div>
   </nav>
   <main class="shelf-page">
-    <section>
-      <a class="shelf-more back" href="/#shelf-sec"><span aria-hidden="true">←</span> back</a>
+    <section id="shelf-sec">
+      <a class="shelf-more back" href="/"><span aria-hidden="true">←</span> back</a>
       <h1 class="shelf-head">shelf</h1>
+      <p class="page-intro">books i've read. tap a spine for the essay, if i've written one.</p>
       <div class="shelf" id="shelf"></div>
+    </section>
+
+    <section id="notebook">
+      <h2>notebook</h2>
+      <p>essays on books i've read, and braindumps on everything else.</p>
+      <div class="chips" id="chips"></div>
+      <ul class="entries" id="entries"></ul>
     </section>
   </main>
 
@@ -44,11 +53,28 @@
     </div>
   </dialog>
 
+  <div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="r-title">
+    <div class="scrim" data-close></div>
+    <div class="book" id="book">
+      <button class="close" type="button" data-close aria-label="close essay">✕</button>
+      <div class="viewport" id="viewport"><div class="flow" id="flow"></div></div>
+      <div class="leaf" id="leaf" aria-hidden="true"></div>
+      <div class="foot-bar">
+        <button type="button" id="prev" aria-label="previous page">←</button>
+        <span id="folio"></span>
+        <button type="button" id="next" aria-label="next page">→</button>
+      </div>
+    </div>
+  </div>
+
   <script type="module">
-    import { mountShelf } from "./js/shelf.js?v=57";
-    import { bar } from "./js/bar.js?v=57";
+    import { mountShelf } from "./js/shelf.js?v=79";
+    import { notebook } from "./js/notebook.js?v=79";
+    import { bar } from "./js/bar.js?v=79";
+    history.scrollRestoration = "manual";
     bar();
-    mountShelf(document.getElementById("shelf"), { rows: 4, noteBase: "/" });
+    mountShelf(document.getElementById("shelf"), { rows: 1 });
+    notebook();
   </script>
 </body>
 </html>

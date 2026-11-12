@@ -1,8 +1,9 @@
-// Draws a shelf of plain spines. The home page shows the first row; the full shelf page (/shelf) shows every book
-// and fills the rest of the shelves with dashed placeholders. A new line in js/books.js takes the next empty slot.
-import { ENTRIES } from "./books.js?v=57";
-import { spine } from "./spines.js?v=57";
-import { esc, popup } from "./popup.js?v=57";
+// Draws the shelf of plain spines on /shelf. It uses as many shelves as the books need (at least one), and fills
+// the end of the last shelf with dashed placeholders. A new line in js/books.js takes the next empty slot, and a
+// new shelf appears once the last one is full.
+import { ENTRIES } from "./books.js?v=79";
+import { spine } from "./spines.js?v=79";
+import { esc, popup } from "./popup.js?v=79";
 
 const SLOT = 50;   // 46px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);
@@ -18,8 +19,8 @@ export function mountShelf(el, { limit = Infinity, rows = 0, noteBase = "" } = {
     const n = perRow();
     if (n === drawn) return;
     drawn = n;
-    // always at least `rows` shelves, and always one empty shelf past the last book
-    const total = rows ? Math.max(rows, Math.ceil(books.length / n) + 1) * n : books.length;
+    // at least `rows` shelves, and only as many more as the books need
+    const total = rows ? Math.max(rows, Math.ceil(books.length / n)) * n : books.length;
     let html = "";
     for (let i = 0; i < total; i++) {
       const b = books[i];

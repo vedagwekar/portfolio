@@ -1,14 +1,14 @@
 // ✏️ The Shelf / notebook. Every entry is a markdown file in /notes, plus one line here.
 //
 //   kind     "book" (shows up as a spine on the shelf) or "note" (a loose idea, no book)
-//   id       the file name: notes/<id>.md, and the link: yoursite/#note/<id>
+//   id       the file name: notes/<id>.md, and the link: yoursite/shelf#note/<id>
 //   status   books only: "reading" | "read" | "favourite"
 //   type     "essay" or "braindump": which notebook tab it shows up under
 //   threads  ids of other entries this one argues with or builds on. They're linked at the end.
 //   date     "2026-11" style. Newest first is up to you; the list keeps this order.
 //
-// The home page shelf shows the first 9 books. the full shelf page (/shelf) shows them all; empty slots are drawn for you,
-// and a new line here takes the next one.
+// Everything lives on /shelf: the books as spines (a new shelf appears once the last one is full), and the notebook
+// list under them. Empty slots are drawn for you, and a new line here takes the next one.
 // A book you've read but haven't written up yet has essay: false. It sits on the shelf and stays off
 // the notebook list. To publish: write notes/<id>.md, delete essay: false, fill in the date and blurb.
 //

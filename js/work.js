@@ -1,7 +1,6 @@
 // ✏️ Your work and projects, in one place.
-// WORK opens as popups from the linked phrases in the about section on the home page
-// (the data-work="…" number in index.html picks which one).
-// PROJECTS is the list on projects.html, in the order shown.
+// WORK is the "what i'm working on" list on the about page (about.html).
+// PROJECTS is the list on projects.html and the "what i've built" list on the about page, in the order shown.
 
 export const WORK = [
   { name: "waterloo aerial robotics", what: "embedded flight software", when: "nov 2026 →", more: "writing sensor drivers in c/c++ for our drone autopilot." },

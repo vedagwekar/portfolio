@@ -4,19 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ved agwekar</title>
-  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png?v=2" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2" />
   <meta name="description" content="ved agwekar. math + cs at waterloo, from calgary. drones, robots, f1 models and essays on books." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=57" />
+  <link rel="stylesheet" href="styles.css?v=79" />
 </head>
 <body>
   <nav class="bar" id="bar" aria-label="quick links">
     <a class="bar-name" href="#top">ved agwekar</a>
     <button class="bar-menu" type="button" aria-expanded="false" aria-controls="bar-links">menu</button>
     <div class="bar-links" id="bar-links">
-      <a href="#about">about</a><a href="/projects">projects</a><a href="#shelf-sec">shelf</a><a href="#notebook">notebook</a><div class="bar-contact">
+      <a href="/about">about</a><a href="/projects">projects</a><a href="/shelf">shelf</a><div class="bar-contact">
         <button class="bar-cbtn" type="button" aria-expanded="false" aria-controls="contact-card">contact <span class="chev" aria-hidden="true">▾</span></button>
         <div class="contact-card" id="contact-card">
           <small>email is best</small>
@@ -32,72 +33,30 @@
 
 
   <header class="stage" id="top">
-    <div class="head">
-      <h1>Ved <br class="mbr" />Agwekar</h1>
-      <p class="seeking">looking for summer 2027 internship opportunities</p>
-    </div>
-
-    <div class="facts">
-      <dl class="who"><dt>mathematics</dt><dd><img class="crest" src="assets/uw-crest.png" alt="" width="54" height="62" /><a href="https://uwaterloo.ca/math/">waterloo</a></dd></dl>
-      <a class="down" href="#about">scroll ↓</a>
-    </div>
-
     <div class="frame"><canvas id="photo" role="img" aria-label="photo of ved, drawn in text characters, from behind, looking out over a lake at sunset"></canvas></div>
-  </header>
-
-  <main>
-    <section id="about">
-      <p>hey, i'm ved. i study math at uwaterloo and i'm from calgary.</p>
-      <p>right now i'm in my 1A semester, working on <a class="wk" href="#about" role="button" data-work="0" aria-haspopup="dialog">flight software at warg</a> and <a class="wk" href="#about" role="button" data-work="1" aria-haspopup="dialog">computer vision for sustainability at spais</a>, alongside running <a class="wk" href="#about" role="button" data-work="2" aria-haspopup="dialog">the youth policy council's website</a>. i  like to make things and figure out how they work, and most importantly, the impact they have.</p>
-      <p class="about-more">the things i've built on my own are on the <a href="/projects">projects page →</a></p>
-      <p>outside of that i play basketball and guitar, watch anime, and read a lot of philosophy. the notebook further down is where i write about what i'm reading, and often tie it back to what i find most interesting in the current state of ever-evolving tech.</p>
-    </section>
-
-
-    <section class="gh" id="github">
-      <h2>github</h2>
-      <p class="gh-head" id="gh-head">loading contributions…</p>
-      <div class="gh-graph" id="gh-graph" role="img" aria-label="github contribution graph"></div>
-      <p class="gh-foot"><span id="gh-day">hover a square to see that day.</span></p>
-    </section>
-
-    <section id="shelf-sec">
-      <h2>shelf</h2>
-      <div class="shelf" id="shelf"></div>
-      <a class="shelf-more" href="/shelf">full shelf <span aria-hidden="true">→</span></a>
-    </section>
-
-    <section id="notebook">
-      <h2>notebook</h2>
-      <p>essays on books i've read, and braindumps on everything else.</p>
-      <div class="chips" id="chips"></div>
-      <ul class="entries" id="entries"></ul>
-    </section>
-
-    <footer class="foot"><span>© 2026 ved agwekar</span><a href="#top">back to top ↑</a></footer>
-  </main>
-
-  <dialog class="pop" id="pop" aria-labelledby="pop-body">
-    <div class="pop-card">
-      <button class="pop-x" type="button" data-pop-close aria-label="close">✕</button>
-      <div id="pop-body"></div>
-    </div>
-  </dialog>
-
-  <div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="r-title">
-    <div class="scrim" data-close></div>
-    <div class="book" id="book">
-      <button class="close" type="button" data-close aria-label="close essay">✕</button>
-      <div class="viewport" id="viewport"><div class="flow" id="flow"></div></div>
-      <div class="leaf" id="leaf" aria-hidden="true"></div>
-      <div class="foot-bar">
-        <button type="button" id="prev" aria-label="previous page">←</button>
-        <span id="folio"></span>
-        <button type="button" id="next" aria-label="next page">→</button>
+    <div class="hero">
+      <div class="intro">
+        <h1>Ved Agwekar</h1>
+        <dl class="who"><dt>mathematics</dt><dd><img class="crest" src="assets/uw-crest.png" alt="" width="54" height="62" /><a href="https://uwaterloo.ca/math/">waterloo</a></dd></dl>
+        <p class="seeking">looking for summer 2027 internship opportunities</p>
+        <div class="now" id="now">
+          <p>hey, i'm ved. i'm in my 1A semester of math at uwaterloo, and i'm from calgary.</p>
+          <p>right now i'm writing flight software at <mark>warg</mark>, working on computer vision for sustainability at <mark>spais</mark>, and running the website for the <mark>youth policy council</mark>.</p>
+          <p>the things i've built on my own are on my <a href="/projects">projects page</a>. my favourite books i've ever read are on my <a href="/shelf">shelf</a>, with my thoughts on them in the <a href="/shelf#notebook">notebook</a> underneath.</p>
+        </div>
+        <section class="gh" id="github">
+          <h2>github</h2>
+          <p class="gh-head" id="gh-head">loading contributions…</p>
+          <div class="gh-graph" id="gh-graph" role="img" aria-label="github contribution graph"></div>
+          <p class="gh-foot"><span id="gh-day">hover a square to see that day.</span></p>
+        </section>
+        <div class="next">
+          <a class="more" href="/about">learn more about me <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 
-  <script type="module" src="js/main.js?v=57"></script>
+  <script type="module" src="js/main.js?v=79"></script>
 </body>
 </html>

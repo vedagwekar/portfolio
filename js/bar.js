@@ -94,6 +94,4 @@ export function bar() {
     }
   }, { rootMargin: "-45% 0px -50% 0px" });
   sections.forEach((s) => io.observe(s));
-  // nothing underlined while you're on the photo
-  if (stage) new IntersectionObserver(([e]) => { if (e.isIntersecting) links.forEach((a) => a.removeAttribute("aria-current")); }, { rootMargin: "-45% 0px -50% 0px" }).observe(stage);
 }

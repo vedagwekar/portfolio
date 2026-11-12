@@ -16,7 +16,7 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 export async function asciiHero(canvas, { reduced }) {
   const img = new Image();
-  await new Promise((ok, fail) => { img.onload = ok; img.onerror = fail; img.src = "assets/hero-photo.jpg?v=57"; });
+  await new Promise((ok, fail) => { img.onload = ok; img.onerror = fail; img.src = "assets/hero-photo.jpg?v=79"; });
 
   const g = canvas.getContext("2d");
   const base = document.createElement("canvas"), b = base.getContext("2d");
@@ -41,7 +41,8 @@ export async function asciiHero(canvas, { reduced }) {
     // cover-crop the photo, then shrink it so each cell is one pixel
     off.canvas.width = cols; off.canvas.height = rows;
     const s = Math.max(W / img.width, H / img.height), dw = img.width * s, dh = img.height * s;
-    const dx = clamp(W / 2 - dw * FOCUS_X, W - dw, 0), dy = (H - dh) / 2;
+    // on wide screens the text panel covers the left, so the person sits further right
+    const dx = W >= 900 ? clamp(W * 0.7 - dw * FOCUS_X, W - dw, W * 0.42) : clamp(W / 2 - dw * FOCUS_X, W - dw, 0), dy = (H - dh) / 2;
     off.drawImage(img, dx / cw, dy / ch, dw / cw, dh / ch);
     const px = off.getImageData(0, 0, cols, rows).data;
 
