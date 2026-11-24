@@ -16,7 +16,7 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 export async function asciiHero(canvas, { reduced }) {
   const img = new Image();
-  await new Promise((ok, fail) => { img.onload = ok; img.onerror = fail; img.src = "assets/hero-photo.jpg?v=101"; });
+  await new Promise((ok, fail) => { img.onload = ok; img.onerror = fail; img.src = "assets/hero-photo.jpg?v=102"; });
 
   const g = canvas.getContext("2d");
   const base = document.createElement("canvas"), b = base.getContext("2d");
