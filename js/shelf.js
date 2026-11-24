@@ -5,7 +5,7 @@ import { ENTRIES } from "./books.js?v=99";
 import { spine } from "./spines.js?v=99";
 import { esc, popup } from "./popup.js?v=99";
 
-const SLOT = 38;   // 34px spine + 4px gap
+const SLOT = 46;   // 42px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);
 
 export function mountShelf(el, { limit = Infinity, rows = 0, noteBase = "" } = {}) {
