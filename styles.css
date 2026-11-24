@@ -8,6 +8,10 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 html.reading { overflow: hidden; }
+/* the home page is one screen: no scrolling, no scrollbar, and navy (not cream) if the edge bounces */
+html.home, html.home body { background: #0d1220; overscroll-behavior: none; scrollbar-width: none; }
+html.home::-webkit-scrollbar, html.home body::-webkit-scrollbar { display: none; }
+@media (min-width: 701px) { html.home, html.home body { overflow: hidden; height: 100%; } }
 body { margin: 0; background: var(--bone) radial-gradient(rgba(32, 35, 31, .07) .6px, transparent .9px) 0 0 / 4px 4px; color: var(--ink); font: 17px/1.6 var(--main); overflow-x: hidden; }
 a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { color: var(--oxblood); }
