@@ -1,5 +1,6 @@
-// A quiet ascii texture behind every page except home, a different one on each page (more to come):
+// A quiet ascii texture behind every page except home, a different one on each page:
 //   about    - drifting haze, with a soft ripple every so often, like a ball bouncing somewhere off the page
+//   projects - a contour map scrolling slowly underneath, the way the ground looks from a drone
 // It's sparse, kept mostly to the edges of the screen so the middle stays clear for text,
 // and holds still for reduced motion. Add ?art=<name> to an address to try another page's texture.
 const CW = 14, CH = 20;
@@ -54,8 +55,23 @@ function haze(put, cols, rows, t) {
   }
 }
 
-const SCENES = { haze };
-const PICK = { about: "haze", projects: "haze", shelf: "haze" };
+function contours(put, cols, rows, t) {
+  const edge = edges(cols), y0 = t * .9;
+  const h = (x, y) => fbm(x * .045, (y + y0) * .07, 1.7);
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const v = h(c, r) * 9, f = v - Math.floor(v);
+    if (f > .1 && f < .9) continue; // only draw close to a contour line
+    const gx = h(c + 1, r) - h(c - 1, r), gy = h(c, r + 1) - h(c, r - 1);
+    // the line runs across the slope, so turn the slope's direction a quarter turn
+    const a = Math.atan2(gy, gx * CH / CW) * 4 / Math.PI;
+    const ch = "-\\|/-\\|/"[(Math.round(a) + 10) % 8];
+    const major = Math.floor(v + .5) % 4 === 0;
+    put(c, r, ch, major ? PURPLE : WHITE, (major ? .34 : .13) * edge(c));
+  }
+}
+
+const SCENES = { haze, contours };
+const PICK = { about: "haze", projects: "contours", shelf: "haze" };
 
 export function asciiBackdrop(page) {
   if (document.documentElement.classList.contains("home")) return;
