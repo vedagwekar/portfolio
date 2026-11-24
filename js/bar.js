@@ -70,13 +70,13 @@ export function bar() {
     }, { once: true });
   }
 
-  // solid as soon as you scroll, so it never sits on top of the photo's text;
+  // clear while you're at the top of the page, frosted glass once you scroll;
   // your name shows in it once the big name on the photo is gone
+  const onScroll = () => nav.classList.toggle("solid", scrollY > 4);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
   const stage = document.querySelector(".stage");
   if (stage) {
-    const onScroll = () => nav.classList.toggle("solid", scrollY > 4);
-    addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
     const h1 = stage.querySelector("h1");
     new IntersectionObserver(([e]) => nav.classList.toggle("past", !e.isIntersecting), { rootMargin: "-52px 0px 0px 0px" }).observe(h1);
   } else nav.classList.add("past");

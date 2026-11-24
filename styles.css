@@ -29,7 +29,7 @@ a:hover { color: var(--oxblood); }
 
 /* ---------- quick-links bar ---------- */
 .bar { position: fixed; z-index: 10; top: 0; left: 0; right: 0; height: var(--bar); display: flex; align-items: center; gap: 18px; padding: 0 clamp(18px, 2.2vw, 32px); color: #fff; font-size: 15px; transition: background-color .25s, color .25s, box-shadow .25s; }
-.bar.solid, .bar.open { background: rgba(239, 232, 218, .92); color: var(--ink); box-shadow: 0 1px 0 var(--rule); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.bar.solid, .bar.open { background: linear-gradient(rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)), rgba(12, 12, 18, .42); color: var(--ink); box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .08), 0 8px 30px rgba(0, 0, 0, .35); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); }
 .bar-name { font-weight: 600; text-decoration: none; opacity: 0; pointer-events: none; transition: opacity .25s; }
 .bar.past .bar-name, .bar.open .bar-name { opacity: 1; pointer-events: auto; }
 .bar-links { margin-left: auto; display: flex; align-items: center; gap: 18px; }
