@@ -11,7 +11,7 @@ const COLOURS = [
   ["#34625f", "#efe8da"],   // teal
   ["#d9d0f5", "#14121c"],   // lavender
 ];
-const HEIGHTS = [214, 190, 206, 198, 220, 186, 224, 194, 210];
+const HEIGHTS = [150, 134, 144, 138, 154, 130, 158, 136, 148];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 

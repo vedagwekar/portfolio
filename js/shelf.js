@@ -1,11 +1,11 @@
-// Draws the shelf of plain spines on /shelf. It uses as many shelves as the books need (at least one), and fills
-// the end of the last shelf with dashed placeholders. A new line in js/books.js takes the next empty slot, and a
-// new shelf appears once the last one is full.
+// Draws the shelf of plain spines on /shelf: one spine per book read, wrapping onto a new shelf when a row is full.
+// A new line in js/books.js adds a spine. Passing `rows` instead fills that many shelves, with dashed placeholders
+// at the end.
 import { ENTRIES } from "./books.js?v=95";
 import { spine } from "./spines.js?v=95";
 import { esc, popup } from "./popup.js?v=95";
 
-const SLOT = 50;   // 46px spine + 4px gap
+const SLOT = 38;   // 34px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);
 
 export function mountShelf(el, { limit = Infinity, rows = 0, noteBase = "" } = {}) {
