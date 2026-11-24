@@ -1,7 +1,7 @@
 :root {
-  --ink: #20231f; --bone: #efe8da; --page: #f8f3e6; --muted: #6c7267; --rule: #d3cfbf;
-  --hl: #ecd492; --bar: 52px;
-  --sage: #c9d4c6; --moss: #3e5a4b; --oxblood: #8a2f2b; --ochre: #c4923a;
+  --ink: #f5f5f7; --bone: #000; --page: #111114; --muted: #9d9daa; --rule: #26262d;
+  --hl: rgba(167, 139, 250, .38); --purple: #a78bfa; --bar: 52px;
+  --sage: #2a2240; --moss: #7c5cf0; --oxblood: #b69cff; --ochre: #c4b5fd;
   --main: "Schibsted Grotesk", system-ui, sans-serif;
   --sans: var(--main);
 }
@@ -9,10 +9,10 @@
 html { scroll-behavior: smooth; }
 html.reading { overflow: hidden; }
 /* the home page is one screen: no scrolling, no scrollbar, and navy (not cream) if the edge bounces */
-html.home, html.home body { background: #0d1220; overscroll-behavior: none; scrollbar-width: none; }
+html.home, html.home body { background: #000; overscroll-behavior: none; scrollbar-width: none; }
 html.home::-webkit-scrollbar, html.home body::-webkit-scrollbar { display: none; }
 @media (min-width: 701px) { html.home, html.home body { overflow: hidden; height: 100%; } }
-body { margin: 0; background: var(--bone) radial-gradient(rgba(32, 35, 31, .07) .6px, transparent .9px) 0 0 / 4px 4px; color: var(--ink); font: 17px/1.6 var(--main); overflow-x: hidden; }
+body { margin: 0; background: radial-gradient(90% 60% at 50% -12%, rgba(124, 92, 240, .2), transparent 70%) fixed, radial-gradient(60% 50% at 105% 110%, rgba(124, 92, 240, .1), transparent 70%) fixed, #000; color: var(--ink); font: 17px/1.6 var(--main); overflow-x: hidden; }
 a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { color: var(--oxblood); }
 
@@ -82,7 +82,7 @@ ul, ol { list-style: none; }
 .now ul { list-style: none; display: grid; gap: 7px; }
 .now li { position: relative; padding-left: 20px; }
 .now li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--hl); }
-.stage .wk { text-decoration-color: rgba(243, 236, 223, .5); --hl: rgba(236, 212, 146, .3); }
+.stage .wk { text-decoration-color: rgba(255, 255, 255, .5); --hl: rgba(167, 139, 250, .38); }
 .stage .wk:hover, .stage .wk:focus-visible { text-decoration-color: var(--cream); }
 .down { display: inline-flex; text-decoration: none; align-items: center; gap: 8px; font-size: 19px; padding: 8px 16px 8px 18px; border: 1px solid rgba(243, 236, 223, .45); border-radius: 999px; background: rgba(8, 11, 20, .45); pointer-events: auto; animation: nudge 2.4s ease-in-out infinite; }
 .down span { font-size: 1.3em; line-height: 1; }
