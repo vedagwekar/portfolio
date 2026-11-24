@@ -11,7 +11,8 @@ if (/^#(note\/|notebook|shelf-sec)/.test(location.hash)) {
   location.replace("/shelf" + (location.hash.startsWith("#note/") ? location.hash : location.hash === "#notebook" ? "#notebook" : ""));
 }
 
-// the home page doesn't scroll, so on a short window shrink the text to fit instead of cutting it off
+// the home page doesn't scroll, so on a short window shrink the text to fit instead of cutting it off,
+// and on a very large screen grow it so it isn't lost next to the photo
 function fitIntro() {
   const intro = document.querySelector(".intro"), hero = document.querySelector(".hero");
   if (!intro || !hero) return;
@@ -20,7 +21,11 @@ function fitIntro() {
   const cs = getComputedStyle(hero);
   const room = innerHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
   const h = intro.offsetHeight;
-  if (h > room) { intro.style.transformOrigin = "left top"; intro.style.scale = String(room / h); }
+  // very wide screens (past 1600px) scale the text up with the photo, up to 2x, so it keeps a laptop's proportions
+  const grow = innerWidth > 1600 ? Math.min(innerWidth / 1440, 2) : 1;
+  const s = Math.min(grow, room / h);
+  // shrinking: the block is taller than the room, so it sits at the top; growing: it's centred, so grow from the middle
+  if (s !== 1) { intro.style.transformOrigin = s < 1 ? "left top" : "left center"; intro.style.scale = String(s); }
 }
 
 // ---------- boot ----------

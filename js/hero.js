@@ -5,7 +5,7 @@
 const RAMP = " .,:;i1tfLCG08@";       // ✏️ dark → bright. Swap for any characters you like
 const CONTRAST = 0.85;           // below 1 brings out the dark parts, above 1 hides them
 const FOCUS_X = 0.54;           // keeps the person in frame when a narrow screen crops the sides
-const RADIUS = 100;              // px around the cursor that gets pushed
+const RADIUS = 100;              // px around the cursor that gets pushed (grows with the characters on big screens)
 const PUSH = 1.5;                // how hard the cursor pushes
 const SPRING = 0.075;            // how hard characters pull back home
 const DAMP = 0.8;                // lower settles faster
@@ -22,7 +22,7 @@ export async function asciiHero(canvas, { reduced }) {
   const base = document.createElement("canvas"), b = base.getContext("2d");
   const off = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
   const frame = canvas.parentElement;
-  let W = 0, H = 0, dpr = 1, fs = 11, cw = 7, ch = 13, cols = 0, rows = 0;
+  let W = 0, H = 0, dpr = 1, fs = 11, cw = 7, ch = 13, cols = 0, rows = 0, reach = RADIUS;
   let glyph, colour, ox, oy, vx, vy;
   const active = new Set();
 
@@ -30,8 +30,12 @@ export async function asciiHero(canvas, { reduced }) {
   function fit() {
     W = frame.clientWidth; H = frame.clientHeight;
     if (!W || !H) return false;
-    dpr = Math.min(2, devicePixelRatio || 1);
-    fs = W < 700 ? 5.5 : W < 1200 ? 6.5 : 7;   // ✏️ character size in px: smaller shows more of the photo
+    // very large screens: keep the canvas under ~12 million pixels (browsers refuse or crawl past ~16M)
+    dpr = Math.min(2, devicePixelRatio || 1, Math.sqrt(12e6 / (W * H)));
+    // ✏️ character size in px: smaller shows more of the photo. Past 1440px wide it grows with the screen,
+    // so a 4K or ultrawide display draws about the same number of characters as a laptop instead of 4x more
+    fs = W < 700 ? 5.5 : W < 1200 ? 6.5 : Math.max(7, W / 205);
+    reach = RADIUS * Math.max(1, fs / 7);
     for (const c of [canvas, base]) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
     canvas.style.width = `${W}px`; canvas.style.height = `${H}px`;
     g.font = `${fs}px ${FONT}`;
@@ -132,13 +136,13 @@ export async function asciiHero(canvas, { reduced }) {
     const inside = on && mx >= 0 && my >= 0 && mx < W && my < H;
 
     if (inside) {
-      const k0 = Math.max(0, ((mx - RADIUS) / cw) | 0), k1 = Math.min(cols - 1, ((mx + RADIUS) / cw) | 0);
-      const j0 = Math.max(0, ((my - RADIUS) / ch) | 0), j1 = Math.min(rows - 1, ((my + RADIUS) / ch) | 0);
+      const k0 = Math.max(0, ((mx - reach) / cw) | 0), k1 = Math.min(cols - 1, ((mx + reach) / cw) | 0);
+      const j0 = Math.max(0, ((my - reach) / ch) | 0), j1 = Math.min(rows - 1, ((my + reach) / ch) | 0);
       for (let j = j0; j <= j1; j++) for (let k = k0; k <= k1; k++) {
         const i = j * cols + k;
         const dx = k * cw + cw / 2 + ox[i] - mx, dy = j * ch + ch / 2 + oy[i] - my, d = Math.hypot(dx, dy);
-        if (d >= RADIUS || d < 0.01) continue;
-        const f = (1 - d / RADIUS) ** 2 * PUSH;
+        if (d >= reach || d < 0.01) continue;
+        const f = (1 - d / reach) ** 2 * PUSH * (reach / RADIUS);
         vx[i] += (dx / d) * f; vy[i] += (dy / d) * f;
         active.add(i);
       }
