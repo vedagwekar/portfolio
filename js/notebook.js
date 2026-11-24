@@ -55,9 +55,19 @@ const perSpread = () => (getComputedStyle(flow).columnCount === "2" ? 2 : 1);
 const gap = () => parseFloat(getComputedStyle(flow).columnGap) || 0;
 
 function measure() {
+  if (reader.hidden) return;
   flow.style.transform = "";
+  // a fixed pixel height, so every browser breaks the text into columns the same way
+  flow.style.height = `${viewport.clientHeight}px`;
   const step = flow.clientWidth + gap();
-  pagesTotal = Math.max(1, Math.round((flow.scrollWidth + gap()) / step));
+  // count pages by how far right the text actually reaches. safari doesn't count overflowing
+  // columns in scrollWidth, which left phones stuck on the first page
+  const left = flow.getBoundingClientRect().left;
+  let far = flow.scrollWidth;
+  for (const el of flow.querySelectorAll("header, .body > *, .threads")) {
+    for (const r of el.getClientRects()) far = Math.max(far, r.right - left);
+  }
+  pagesTotal = Math.max(1, Math.ceil((far + gap()) / step - 0.02));
   page = Math.min(page, pagesTotal - 1);
   place();
 }
@@ -101,7 +111,9 @@ async function openNote(id) {
   reader.hidden = false;
   document.documentElement.classList.add("reading");
   page = 0;
-  await (document.fonts.ready);
+  measure();
+  // measure again once the fonts are in, without waiting forever on browsers where that never settles
+  await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]);
   measure();
   $("book").focus?.({ preventScroll: true });
   if (wasHidden) {
@@ -161,7 +173,9 @@ viewport.addEventListener("focusin", (e) => {
   const shift = Math.floor(left / step);
   if (shift) { page = Math.max(0, Math.min(pagesTotal - 1, page + shift)); place(); }
 });
-addEventListener("resize", () => { if (!reader.hidden) measure(); });
+// phones change the reader's size as the address bar shows and hides, so measure whenever it changes
+new ResizeObserver(() => measure()).observe(viewport);
+addEventListener("resize", () => measure());
 addEventListener("hashchange", route);
 
 
