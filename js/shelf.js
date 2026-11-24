@@ -36,6 +36,6 @@ export function mountShelf(el, { limit = Infinity, rows = 0, noteBase = "" } = {
     const s = e.target.closest(".spine");
     if (!s) return;
     const b = books[+s.dataset.i], ready = b.essay !== false;
-    popup({ kicker: b.author, title: b.title, body: ready ? b.blurb : "no essay yet.", url: ready ? `${noteBase}#note/${b.id}` : "", urlText: "read the essay" });
+    popup({ kicker: b.author, title: b.title, body: ready ? b.blurb : "no mini essay yet.", url: ready ? `${noteBase}#note/${b.id}` : "", urlText: "read the mini essay" });
   });
 }

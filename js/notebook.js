@@ -16,7 +16,7 @@ const nice = (d) => { if (!d) return ""; const [y, m] = d.split("-"); return `${
 
 const typeOf = (e) => e.type || (e.kind === "book" ? "essay" : "braindump");
 function list() {
-  const TABS = [["essay", "essays", "no essays yet."], ["braindump", "braindumps", "nothing here yet."]];
+  const TABS = [["essay", "mini essays", "no mini essays yet."], ["braindump", "braindumps", "nothing here yet."]];
   let tab = entries.some((e) => typeOf(e) === "essay") ? "essay" : "braindump";
   const chips = $("chips"), list = $("entries");
   const draw = () => {
