@@ -59,15 +59,15 @@ h1, h2, h3, p, ul, ol, dl, dd, blockquote { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
 
 /* ---------- front ---------- */
-.stage { --cream: #f3ecdf; --dim: rgba(243, 236, 223, .62); position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #0d1220; color: var(--cream); }
+.stage { --cream: #fff; --dim: rgba(255, 255, 255, .66); position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #000; color: var(--cream); }
 .frame { position: absolute; inset: 0; overflow: hidden; }
 #photo { display: block; touch-action: pan-y; }
 /* a dark panel down the left so the text reads clearly, and a fade along the bottom */
 .stage::before, .stage::after { content: ""; position: absolute; z-index: 1; pointer-events: none; }
-.stage::before { inset: 0 auto 0 0; width: min(100%, max(62%, 720px)); background: linear-gradient(90deg, rgba(8, 11, 20, .93), rgba(8, 11, 20, .86) 62%, transparent); }
-.stage::after { left: 0; right: 0; bottom: 0; height: 22%; background: linear-gradient(transparent, rgba(8, 11, 20, .7)); }
+.stage::before { inset: 0 auto 0 0; width: min(100%, max(62%, 720px)); background: linear-gradient(90deg, rgba(0, 0, 0, .94), rgba(0, 0, 0, .86) 62%, transparent); }
+.stage::after { left: 0; right: 0; bottom: 0; height: 22%; background: linear-gradient(transparent, rgba(0, 0, 0, .7)); }
 .hero { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding: calc(var(--bar) + clamp(14px, 4.5vh, 56px)) clamp(18px, 2.6vw, 38px) clamp(20px, 3.6vh, 34px); pointer-events: none; }
-.intro { width: min(570px, 100%); align-self: center; pointer-events: auto; text-shadow: 0 1px 10px rgba(8, 11, 20, .7); }
+.intro { width: min(570px, 100%); align-self: center; pointer-events: auto; text-shadow: 0 1px 10px rgba(0, 0, 0, .7); }
 .stage h1 { margin: 0; font: 500 clamp(58px, 7.4vw, 120px)/.9 var(--main); letter-spacing: -.05em; white-space: nowrap; }
 .who { display: flex; align-items: baseline; gap: .8em; margin-top: 20px; font-size: clamp(22px, 2.1vw, 31px); font-weight: 500; line-height: 1.15; }
 .who dt { color: var(--dim); font-weight: 400; }
@@ -76,22 +76,22 @@ ul, ol { list-style: none; }
 .now p + p { margin-top: 12px; }
 /* every link on the front page keeps a thin underline; the things i'm working on are highlighted instead */
 .stage .intro a:not(.wk):not(.more) { background-size: 100% 1px; }
-.stage .intro a.hl:hover mark { background: rgba(236, 212, 146, .45); }
-.now mark { white-space: nowrap; color: inherit; background: rgba(236, 212, 146, .26); padding: 0 2px; border-radius: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.stage .intro a.hl:hover mark { background: rgba(167, 139, 250, .6); }
+.now mark { white-space: nowrap; color: inherit; background: rgba(167, 139, 250, .38); padding: 0 2px; border-radius: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .now .wk, .now a { white-space: normal; }
 .now ul { list-style: none; display: grid; gap: 7px; }
 .now li { position: relative; padding-left: 20px; }
-.now li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--hl); }
+.now li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; background: var(--purple); }
 .stage .wk { text-decoration-color: rgba(255, 255, 255, .5); --hl: rgba(167, 139, 250, .38); }
 .stage .wk:hover, .stage .wk:focus-visible { text-decoration-color: var(--cream); }
-.down { display: inline-flex; text-decoration: none; align-items: center; gap: 8px; font-size: 19px; padding: 8px 16px 8px 18px; border: 1px solid rgba(243, 236, 223, .45); border-radius: 999px; background: rgba(8, 11, 20, .45); pointer-events: auto; animation: nudge 2.4s ease-in-out infinite; }
+.down { display: inline-flex; text-decoration: none; align-items: center; gap: 8px; font-size: 19px; padding: 8px 16px 8px 18px; border: 1px solid rgba(255, 255, 255, .45); border-radius: 999px; background: rgba(0, 0, 0, .45); pointer-events: auto; animation: nudge 2.4s ease-in-out infinite; }
 .down span { font-size: 1.3em; line-height: 1; }
-.stage .down:hover, .down:focus-visible { background: var(--cream); color: #0d1220; border-color: var(--cream); }
+.stage .down:hover, .down:focus-visible { background: var(--cream); color: #000; border-color: var(--cream); }
 .down { transition: background .2s, color .2s, border-color .2s; }
 @keyframes nudge { 50% { translate: 0 3px; } }
 .crest { width: auto; height: 1.05em; vertical-align: -.17em; margin-right: .35em; }
 .uw { white-space: nowrap; }
-.stage a:hover { color: #fff; }
+.stage a:hover { color: var(--ochre); }
 .stage :focus-visible { outline-color: var(--cream); }
 
 /* ---------- popups ---------- */
@@ -118,7 +118,7 @@ section > h2 { display: flex; align-items: center; gap: 9px; font: 500 16px/1.1 
 section > h2::before { content: ""; width: 7px; height: 7px; background: var(--oxblood); }
 
 /* ---------- work links inside the about text ---------- */
-.wk { color: inherit; -webkit-box-decoration-break: clone; box-decoration-break: clone; text-decoration: underline dotted; text-decoration-color: #9a9c8f; text-underline-offset: 4px; background: linear-gradient(var(--hl), var(--hl)) 0 88% / 0 42% no-repeat; transition: background-size .32s cubic-bezier(.4,0,.2,1); }
+.wk { color: inherit; -webkit-box-decoration-break: clone; box-decoration-break: clone; text-decoration: underline dotted; text-decoration-color: #6d6d78; text-underline-offset: 4px; background: linear-gradient(var(--hl), var(--hl)) 0 88% / 0 42% no-repeat; transition: background-size .32s cubic-bezier(.4,0,.2,1); }
 .wk:hover, .wk:focus-visible { color: inherit; background-size: 100% 42%; text-decoration-color: var(--ink); }
 .about-lead { font-size: clamp(21px, 2.4vw, 26px); line-height: 1.3; letter-spacing: -.01em; margin-bottom: 26px !important; }
 .about-list { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 34px; }
@@ -205,25 +205,25 @@ main.projects-page { max-width: 1060px; padding-top: calc(var(--bar) + 10px); pa
 .gh-foot a { color: var(--ink); }
 .stage .gh { margin-top: clamp(14px, 2.6vh, 30px); }
 .stage .gh > h2 { color: var(--dim); margin-bottom: 8px; font-size: 16px; }
-.stage .gh > h2::before { background: var(--hl); }
+.stage .gh > h2::before { background: var(--purple); }
 .stage .gh-head { margin-bottom: 8px !important; font-size: 16px; }
 .stage .gh-foot { font-size: 15px; }
 .stage .gh-months { font-size: 12.5px; }
 .stage .gh-months, .stage .gh-foot { color: var(--dim); }
 .stage .gh-foot a { color: var(--cream); }
-.stage .gh-cells i { background: rgba(243, 236, 223, .09); }
-.stage .gh-cells i[data-l="1"] { background: #2f5a45; }
-.stage .gh-cells i[data-l="2"] { background: #3f8a5f; }
-.stage .gh-cells i[data-l="3"] { background: #5fbf7f; }
-.stage .gh-cells i[data-l="4"] { background: #9be3a8; }
+.stage .gh-cells i { background: rgba(255, 255, 255, .09); }
+.stage .gh-cells i[data-l="1"] { background: #3b2a6e; }
+.stage .gh-cells i[data-l="2"] { background: #5b3fb0; }
+.stage .gh-cells i[data-l="3"] { background: #8b5cf6; }
+.stage .gh-cells i[data-l="4"] { background: #c4b5fd; }
 .stage .gh-cells i[data-t]:hover { outline-color: var(--cream); }
 .next { margin-top: clamp(12px, 2vh, 30px); display: flex; align-items: center; gap: 14px 22px; }
 .next .more { flex: none; }
 .lure { font-size: 16px; line-height: 1.4; color: var(--dim); }
 .lure a { color: var(--cream); }
-.more { display: inline-flex; align-items: center; gap: 9px; padding: 8px 17px; border-radius: 999px; background: var(--cream); color: #0d1220; font-size: 16.5px; font-weight: 500; text-decoration: none; text-shadow: none; transition: background .2s; }
+.more { display: inline-flex; align-items: center; gap: 9px; padding: 8px 17px; border-radius: 999px; background: var(--cream); color: #000; font-size: 16.5px; font-weight: 500; text-decoration: none; text-shadow: none; transition: background .2s; }
 .more span { transition: translate .2s; }
-.stage .more:hover, .more:focus-visible { background: #fff; color: #0d1220; }
+.stage .more:hover, .more:focus-visible { background: #fff; color: #000; }
 .more:hover span { translate: 4px 0; }
 
 /* ---------- shelf ---------- */
@@ -297,7 +297,7 @@ main.shelf-page { max-width: 1020px; padding-top: calc(var(--bar) + 10px); paddi
 @media (max-width: 700px) {
   .proj li { grid-template-columns: 34px 1fr; }
   .proj-name { font-size: 23px; }
-  .stage::before { width: 100%; background: rgba(8, 11, 20, .66); }
+  .stage::before { width: 100%; background: rgba(0, 0, 0, .7); }
   .stage::after { display: none; }
   .hero { padding: calc(var(--bar) + 22px) 16px 34px; }
   .stage h1 { font-size: min(72px, 14.4vw); }

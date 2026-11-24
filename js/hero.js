@@ -9,7 +9,7 @@ const RADIUS = 100;              // px around the cursor that gets pushed (grows
 const PUSH = 1.5;                // how hard the cursor pushes
 const SPRING = 0.075;            // how hard characters pull back home
 const DAMP = 0.8;                // lower settles faster
-const BG = "#0d1220";
+const BG = "#000";
 const FONT = `ui-monospace, "SF Mono", Menlo, Consolas, monospace`;
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -110,7 +110,7 @@ export async function asciiHero(canvas, { reduced }) {
           if (t < w - 0.12) continue;
           const settled = t >= w;
           if (settled && !glyph[i]) continue;
-          const c = settled ? colour[i] : "rgba(243,236,223,.35)";
+          const c = settled ? colour[i] : "rgba(255,255,255,.35)";
           if (c !== last) { last = c; g.fillStyle = c; }
           g.fillText(settled ? RAMP[glyph[i]] : RAMP[1 + ((Math.random() * (RAMP.length - 1)) | 0)], k * cw, j * ch);
         }
