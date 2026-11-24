@@ -262,9 +262,9 @@ main.shelf-page { max-width: 1020px; padding-top: calc(var(--bar) + 10px); paddi
 .foot a { color: var(--ink); }
 
 /* ---------- reader: a book ---------- */
-.reader { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 18px; perspective: 1800px; }
+.reader { position: fixed; inset: 0; z-index: 20; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; padding: 18px; perspective: 1800px; }
 .scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, .84); }
-.book { position: relative; width: min(1000px, 100%); height: min(720px, 100%); background: var(--page); box-shadow: 0 24px 60px rgba(0, 0, 0, .35); padding: 44px 54px 54px; display: flex; flex-direction: column; animation: rise .35s cubic-bezier(.2,.9,.3,1); transform-style: preserve-3d; }
+.book { position: relative; width: min(1000px, 100%); height: min(720px, calc(100vh - 36px)); height: min(720px, calc(100dvh - 36px)); background: var(--page); box-shadow: 0 24px 60px rgba(0, 0, 0, .35); padding: 44px 54px 54px; display: flex; flex-direction: column; animation: rise .35s cubic-bezier(.2,.9,.3,1); transform-style: preserve-3d; }
 @keyframes rise { from { translate: 0 24px; opacity: 0; } }
 .book::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 56px; margin-left: -28px; background: linear-gradient(90deg, transparent, rgba(0,0,0,.5) 49%, rgba(255,255,255,.03) 51%, transparent); pointer-events: none; }
 .viewport { flex: 1; min-height: 0; overflow: hidden; position: relative; z-index: 1; }
