@@ -240,6 +240,10 @@ main.projects-page { max-width: 1060px; padding-top: calc(var(--bar) + 10px); pa
 .shelf-more:hover span { translate: 4px 0; }
 .shelf-more.back { justify-content: flex-start; margin: 0 0 18px; }
 .shelf-more.back:hover span { translate: -4px 0; }
+/* on the shelf page the shelf sits bigger, in the middle of the page */
+#shelf-sec .shelf { margin: 28px auto 12px; }
+@media (min-width: 720px) { #shelf-sec .shelf { zoom: 1.5; } }
+@media (min-width: 480px) and (max-width: 719px) { #shelf-sec .shelf { zoom: 1.2; } }
 main.shelf-page { max-width: 1020px; padding-top: calc(var(--bar) + 10px); padding-bottom: 60px; }
 .shelf-head { font: 600 32px/1.1 var(--main); letter-spacing: -.03em; margin-bottom: 8px; }
 
