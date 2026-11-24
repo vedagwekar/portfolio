@@ -9,7 +9,7 @@ const COLOURS = [
   ["#553a50", "#efe8da"],   // plum
   ["#d9cdb3", "#20231f"],   // sand
   ["#34625f", "#efe8da"],   // teal
-  ["#20231f", "#efe8da"],   // ink
+  ["#d9d0f5", "#14121c"],   // lavender
 ];
 const HEIGHTS = [214, 190, 206, 198, 220, 186, 224, 194, 210];
 
