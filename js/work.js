@@ -11,9 +11,9 @@ export const WORK = [
 // video: a YouTube video id (the part after "watch?v="). Projects with one show the video on /projects;
 // put them first. links: extra buttons under the description, besides the github link in url.
 export const PROJECTS = [
-  { name: "squint", tags: ["hack western 13", "nov 2026"], video: "T-LUZIXTAD8", url: "https://github.com/dinud2/Squint",
+  { name: "squint", tags: ["hack western 13", "sun life track runner-up", "nov 2026"], video: "T-LUZIXTAD8", url: "https://github.com/dinud2/Squint",
     links: [{ label: "devpost", url: "https://devpost.com/software/squint-etuyvg" }, { label: "try the family app", url: "https://appetize.io/app/b_yzatlsilxxj7evpjwh3tvedppy" }],
-    more: "a small face on the kitchen counter that knows who picked up which pill bottle, stops a second dose of a blood thinner before it happens, and tells the family. every model runs on a raspberry pi 5 under qnx, and nothing goes to the cloud." },
+    more: "a small face on the kitchen counter that knows who picked up which pill bottle, stops a second dose of a prescription medication before it happens, and tells the family. every model runs on a raspberry pi 5 under qnx, and nothing goes to the cloud." },
   { name: "homeward", tags: ["stellar blockchain innovation challenge", "nov 2026"], video: "AOz72MBwKmw", url: "https://github.com/vedagwekar/homeward",
     links: [{ label: "devpost", url: "https://devpost.com/software/homeward-jbf4wh" }, { label: "guided demo", url: "https://homeward-ecru.vercel.app/demo" }],
     more: "families abroad pay for their parents' house through a smart contract on stellar, one stage at a time. each stage is paid only after an independent engineer checks the work and the parent says yes. i was the technical lead, built the backend, and presented it." },
