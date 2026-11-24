@@ -175,7 +175,7 @@ main.projects-page { max-width: 1060px; padding-top: calc(var(--bar) + 10px); pa
 .theater-x:hover { opacity: 1; }
 .theater-frame { aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, .5); }
 .theater-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-@media (max-width: 860px) { .reel { grid-template-columns: 1fr; } .reel.flip .reel-media { order: 0; } }
+@media (max-width: 960px) { .reel { grid-template-columns: 1fr; } .reel.flip .reel-media { order: 0; } }
 .proj-intro { color: var(--muted); margin: 0 0 26px; }
 .proj-intro a { color: var(--ink); }
 .proj li { display: grid; grid-template-columns: 56px 1fr; gap: 0 12px; padding: 22px 0 24px; border-top: 1px solid var(--rule); }
