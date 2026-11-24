@@ -1,31 +1,25 @@
-near the start of *thus spoke zarathustra*, nietzsche describes three changes the spirit goes through. it becomes a camel, then a lion, then a child. most people remember the lion, because the lion is the exciting one. i think the whole book is really about the child, and about how hard it is to get there.
+early in *thus spoke zarathustra*, nietzsche says the spirit changes three times. it becomes a camel, then a lion, then a child. the lion gets most of the attention because it's the one that fights. i finished the book thinking the child was the part nietzsche cared about, and the part he thought almost nobody reaches.
 
 > of three metamorphoses of the spirit do i tell you: how the spirit becometh a camel, the camel a lion, and the lion at last a child.
 
-the camel kneels and asks to be loaded. it wants the heaviest things: duty, rules, what it's been told is good. this isn't weakness. carrying is how you get strong. but the camel never asks whether the weight is its own.
+the camel kneels down and asks to be loaded with the heaviest things it can find: duties, rules, everything it has been told is good. nietzsche doesn't mock it. carrying weight is how the camel gets strong. it just never asks whose weight it is.
 
-so it walks into the desert and becomes a lion. the lion meets a dragon covered in scales, and every scale says "thou shalt." the lion's whole task is to say no. it wins its freedom by refusing.
+out in the desert the camel turns into a lion and meets a dragon whose every scale says "thou shalt." the lion's job is to say no, and it earns its freedom by refusing.
 
-here's what i missed the first time. the lion is still defined by the dragon. everything it is, it is *against* something. take the dragon away and the lion has nothing to do. a lot of people, i think, stop here. they learn to rebel, and the rebellion becomes the new load. they've only swapped one master for another one with the opposite opinions.
+on a first read i liked the lion best. on the second i noticed that the lion only exists in relation to the dragon. remove the dragon and it has nothing left to do. i think a lot of people stop there, myself included at times. rebellion turns into an identity, and you end up taking orders from the opposite of whatever used to give them.
 
-the child is different. nietzsche calls it innocence and forgetting, a new beginning, a game, a wheel rolling out of itself, a sacred yes. the child doesn't fight the old values. it has simply stopped needing them, and it makes new things because making things is what it does. you can't get to the child by skipping the camel and the lion. you have to carry, and then refuse, and only then is there room to play.
+the child has stopped needing the old values at all, so it doesn't have to fight them. nietzsche calls it innocence and forgetting, a new beginning, a game, a sacred yes. it makes things because making things is what it does. you can't skip ahead to it, either. the child comes after the carrying and the refusing.
 
-## a rope over an abyss
+later zarathustra describes man as a rope stretched between the animal and the overman, over an abyss. i like that image because a rope is something you cross. the overman reads to me as a direction you keep walking in, more than a person you eventually become. and the eternal recurrence works as a test of where you are on the rope: if you had to live this exact life again, forever, could you want that? a camel could put up with it, and a lion would hate it. wanting it seems possible only for someone who built the life themselves.
 
-zarathustra says that man is a rope stretched between the animal and the overman, a rope over an abyss. what matters is that a rope isn't a place. you don't arrive on it. you cross it. the overman isn't a kind of person you become one day. it's a direction, the habit of going on past whatever you were.
+i read this in august, a few weeks before leaving calgary for waterloo, which made it hard to keep at a distance.
 
-the test nietzsche gives for whether you've really reached the child is the eternal recurrence. imagine living this exact life again, every moment, forever. the camel would endure it. the lion would rage against it. only the child could want it, because only the child has made a life that is actually its own.
+most of my life so far has been camel years. i carried grades and expectations and some idea of who i was supposed to be, and i don't regret it, because the carrying taught me to work. moving is the first time the load looks optional. nobody in waterloo has an idea of who i'm supposed to be.
 
-## leaving calgary
+the easy thing would be to become a lion: to define myself against home and against the person people expected. i can feel how good that would feel for a while. it would also just be the dragon again, pointed the other way.
 
-i read this in august, a few weeks before leaving calgary for waterloo, and the timing made it impossible to read as theory.
+the child already shows up in a few places. pickup basketball has it, once you stop thinking about the drills you ran. guitar has it when i stop following the tab and find something that wasn't written down. i'm hoping math can become one of those places, something i play with and not only something i carry toward a degree.
 
-for most of my life so far i've been a camel, and i don't regret it. i carried the grades and the expectations and the idea of who i was supposed to be, and the carrying made me capable of things. but moving away is the first time the weight is visibly optional. nobody in waterloo knows what i'm supposed to be.
-
-the easy move is to become a lion: to define myself against home, against the version of me people expected, against whatever i used to be told. i can feel how attractive that is. it would feel like freedom. but it would just be the dragon again, facing the other way.
-
-i can see the child already in a few corners of my life. it's the difference between running drills and playing pickup, when you stop thinking about the drills and just play. it's the difference between learning a song off a tab and the moment on guitar when you stop following anything and find something that wasn't written down. and it's what i hope math becomes: not a weight i'm carrying toward a degree, but something i get to play with.
-
-the question i want to take with me isn't "what should i get rid of?" that's the lion's question. it's "what would i build if i weren't carrying anything, or fighting anything?" and then, the harder one: would i want to live it again?
+so the question i'm taking with me is what i would make if i weren't carrying anything and weren't fighting anything. after that comes the harder one, whether i'd want to live it again.
 
 *formatted from an original journal entry, aug 2026.*
