@@ -1,7 +1,7 @@
 // The notebook list and the essay reader, used on the shelf page (/shelf).
 // Essays live in js/books.js + notes/<id>.md; a link to "#note/<id>" opens one.
-import { ENTRIES } from "./books.js?v=102";
-import { esc, dlg } from "./popup.js?v=102";
+import { ENTRIES } from "./books.js?v=103";
+import { esc, dlg } from "./popup.js?v=103";
 
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
