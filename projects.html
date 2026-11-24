@@ -35,28 +35,105 @@
     <section>
       <a class="shelf-more back" href="/"><span aria-hidden="true">←</span> back</a>
       <h1 class="shelf-head">projects</h1>
-      <p class="proj-intro">things i've built outside of school and clubs. for what i'm working on right now, see the <a href="/">home page</a>.</p>
+      <p class="proj-intro">things i've built outside of school and clubs. <span id="how">hover a video to preview it, click to watch with sound.</span></p>
+      <div class="reels" id="reels"></div>
+      <h2 class="proj-sub">more projects</h2>
       <ol class="proj" id="proj"></ol>
     </section>
   </main>
 
+  <dialog class="theater" id="theater" aria-label="project video">
+    <div class="theater-in">
+      <div class="theater-top"><span id="theater-title"></span><button class="theater-x" type="button" data-close aria-label="close video">close ✕</button></div>
+      <div class="theater-frame" id="theater-frame"></div>
+    </div>
+  </dialog>
 
   <script type="module">
     import { PROJECTS } from "./js/work.js?v=85";
     import { bar } from "./js/bar.js?v=85";
     bar();
+    // ✏️ the projects themselves live in js/work.js; ones with a video show up as the big cards
     const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    // ✏️ the projects themselves live in js/work.js
     const host = (u) => (u.includes("github.com") ? "github" : new URL(u).hostname.replace(/^www\./, ""));
-    document.getElementById("proj").innerHTML = PROJECTS.map((p, i) => `<li>
-      <span class="proj-n">${String(i + 1).padStart(2, "0")}</span>
+    const linksOf = (p) => [p.url && { label: host(p.url), url: p.url }, ...(p.links || [])].filter(Boolean)
+      .map((l) => `<a class="proj-link" href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("");
+    const yt = (id, o) => `https://www.youtube-nocookie.com/embed/${id}?${new URLSearchParams({ rel: 0, modestbranding: 1, playsinline: 1, ...o })}`;
+
+    const withVideo = PROJECTS.filter((p) => p.video), rest = PROJECTS.filter((p) => !p.video);
+    document.getElementById("reels").innerHTML = withVideo.map((p, i) => `<article class="reel${i % 2 ? " flip" : ""}" data-i="${i}">
+      <button class="reel-media" type="button" aria-label="play the ${esc(p.name)} video">
+        <img src="https://i.ytimg.com/vi/${p.video}/maxresdefault.jpg" alt="" loading="lazy" />
+        <span class="reel-preview" aria-hidden="true"></span>
+        <span class="reel-play" aria-hidden="true">▶ watch</span>
+        <span class="reel-cursor" aria-hidden="true">▶ play with sound</span>
+      </button>
+      <div class="reel-body">
+        <span class="proj-n">${String(i + 1).padStart(2, "0")}</span>
+        <h2 class="proj-name">${esc(p.name)}</h2>
+        <p class="proj-tags">${p.tags.map(esc).join(" · ")}</p>
+        <p class="proj-more">${esc(p.more)}</p>
+        <p class="proj-links">${linksOf(p)}</p>
+      </div>
+    </article>`).join("");
+    document.getElementById("proj").innerHTML = rest.map((p, i) => `<li>
+      <span class="proj-n">${String(withVideo.length + i + 1).padStart(2, "0")}</span>
       <div>
         <h2 class="proj-name">${esc(p.name)}</h2>
         <p class="proj-tags">${p.tags.map(esc).join(" · ")}</p>
         <p class="proj-more">${esc(p.more)}</p>
-        ${p.url ? `<a class="proj-link" href="${p.url}" rel="noopener">${host(p.url)} ↗</a>` : ""}
+        <p class="proj-links">${linksOf(p)}</p>
       </div>
     </li>`).join("");
+
+    // hover: a silent preview plays, a "play with sound" label follows the cursor and the card tilts a little
+    const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine) document.getElementById("how").textContent = "tap a video to watch it.";
+    document.querySelectorAll(".reel").forEach((card) => {
+      const p = withVideo[+card.dataset.i], media = card.querySelector(".reel-media");
+      const slot = card.querySelector(".reel-preview"), label = card.querySelector(".reel-cursor");
+      let timer = 0;
+      if (fine) {
+        media.addEventListener("pointerenter", () => {
+          card.classList.add("hot");
+          if (still) return;
+          timer = setTimeout(() => {
+            const f = Object.assign(document.createElement("iframe"), { src: yt(p.video, { autoplay: 1, mute: 1, controls: 0, loop: 1, playlist: p.video, disablekb: 1, cc_load_policy: 0, iv_load_policy: 3 }), title: "", tabIndex: -1 });
+            f.allow = "autoplay; encrypted-media";
+            // youtube shows a black frame while it loads, so fade in a moment after
+            f.onload = () => setTimeout(() => slot.classList.add("on"), 700);
+            slot.replaceChildren(f);
+          }, 250);
+        });
+        media.addEventListener("pointermove", (e) => {
+          const r = media.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+          label.style.translate = `${x}px ${y}px`;
+          if (!still) media.style.transform = `perspective(900px) rotateY(${((x / r.width) - .5) * 5}deg) rotateX(${(.5 - y / r.height) * 4}deg) scale(1.01)`;
+        });
+        media.addEventListener("pointerleave", () => {
+          clearTimeout(timer);
+          card.classList.remove("hot");
+          slot.classList.remove("on");
+          slot.replaceChildren();
+          media.style.transform = "";
+        });
+      }
+      media.addEventListener("click", () => openTheater(p));
+    });
+
+    // click: the full video with sound in a dark viewer
+    const theater = document.getElementById("theater"), frame = document.getElementById("theater-frame");
+    function openTheater(p) {
+      document.getElementById("theater-title").textContent = p.name;
+      const f = Object.assign(document.createElement("iframe"), { src: yt(p.video, { autoplay: 1 }), title: `${p.name} video` });
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      frame.replaceChildren(f);
+      theater.showModal();
+    }
+    theater.addEventListener("close", () => frame.replaceChildren());
+    theater.addEventListener("click", (e) => { if (e.target === theater || e.target.closest("[data-close]")) theater.close(); });
   </script>
 </body>
 </html>

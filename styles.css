@@ -137,7 +137,41 @@ main.about-page { max-width: 760px; padding-top: calc(var(--bar) + 10px); paddin
 .roles .what { font-size: 15px; color: var(--muted); margin: 2px 0 6px !important; }
 .roles p { margin: 0 !important; }
 .page-intro { color: var(--muted); margin: 0 0 24px !important; }
-main.projects-page { max-width: 760px; padding-top: calc(var(--bar) + 10px); padding-bottom: 80px; }
+main.projects-page { max-width: 1060px; padding-top: calc(var(--bar) + 10px); padding-bottom: 80px; }
+.projects-page .proj-intro, .projects-page .proj, .proj-sub { max-width: 760px; }
+/* the video cards: video on one side, words on the other, alternating */
+.reels { display: grid; gap: clamp(40px, 7vw, 76px); margin: 10px 0 70px; }
+.reel { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(22px, 3.4vw, 44px); align-items: center; }
+.reel.flip .reel-media { order: 2; }
+.reel-media { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: 0; border-radius: 8px; overflow: hidden; background: #0d1220; cursor: pointer; box-shadow: 0 18px 44px -18px rgba(20, 28, 24, .55); transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s; will-change: transform; }
+.reel.hot .reel-media { cursor: none; box-shadow: 0 26px 60px -20px rgba(20, 28, 24, .65); }
+.reel-media img, .reel-preview, .reel-preview iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.reel-media img { object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .4s; }
+.reel.hot .reel-media img { transform: scale(1.04); filter: brightness(.8); }
+.reel-preview { opacity: 0; transition: opacity .5s; pointer-events: none; }
+/* zoomed in a little to crop youtube's title bar and logo off the silent preview */
+.reel-preview iframe { transform: scale(1.32); }
+.reel-preview.on { opacity: 1; }
+.reel-play { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px 7px 11px; border-radius: 999px; background: rgba(13, 18, 32, .82); color: #f3ecdf; font: 500 13.5px/1.2 var(--main); backdrop-filter: blur(4px); transition: opacity .25s, translate .25s; }
+.reel.hot .reel-play { opacity: 0; translate: 0 6px; }
+.reel-cursor { position: absolute; left: 0; top: 0; z-index: 2; margin: -17px 0 0 -62px; padding: 7px 13px; border-radius: 999px; background: var(--page); color: var(--ink); font: 500 13.5px/1.2 var(--main); white-space: nowrap; pointer-events: none; opacity: 0; scale: .6; transition: opacity .2s, scale .2s; box-shadow: 0 6px 20px rgba(0, 0, 0, .28); }
+.reel.hot .reel-cursor { opacity: 1; scale: 1; }
+.reel-media:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.reel-body .proj-n { display: block; line-height: 1; margin-bottom: 10px; }
+.reel-body .proj-name { font-size: clamp(28px, 3.2vw, 38px); }
+.proj-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; }
+.proj-links .proj-link { margin-top: 0; }
+.proj-sub { margin-bottom: 4px !important; }
+/* the full video */
+.theater { width: min(1120px, 94vw); max-width: none; max-height: none; padding: 0; border: 0; background: none; overflow: visible; }
+.theater::backdrop { background: rgba(8, 11, 20, .86); backdrop-filter: blur(6px); }
+.theater[open] { animation: pop-in .25s cubic-bezier(.2,1.1,.4,1); }
+.theater-top { display: flex; justify-content: space-between; align-items: baseline; padding: 0 2px 10px; color: #f3ecdf; font: 500 18px var(--main); }
+.theater-x { border: 0; background: none; color: inherit; font: 14px var(--main); cursor: pointer; opacity: .8; }
+.theater-x:hover { opacity: 1; }
+.theater-frame { aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, .5); }
+.theater-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 860px) { .reel { grid-template-columns: 1fr; } .reel.flip .reel-media { order: 0; } }
 .proj-intro { color: var(--muted); margin: 0 0 26px; }
 .proj-intro a { color: var(--ink); }
 .proj li { display: grid; grid-template-columns: 56px 1fr; gap: 0 12px; padding: 22px 0 24px; border-top: 1px solid var(--rule); }
