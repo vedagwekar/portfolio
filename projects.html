@@ -50,8 +50,10 @@
   </dialog>
 
   <script type="module">
-    import { PROJECTS } from "./js/work.js?v=95";
-    import { bar } from "./js/bar.js?v=95";
+    import { PROJECTS } from "./js/work.js?v=99";
+    import { bar } from "./js/bar.js?v=99";
+    import { asciiBackdrop } from "./js/bg.js?v=99";
+    asciiBackdrop("projects");
     bar();
     // ✏️ the projects themselves live in js/work.js; ones with a video show up as the big cards
     const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));

@@ -54,8 +54,10 @@
   </main>
 
   <script type="module">
-    import { WORK, PROJECTS } from "./js/work.js?v=95";
-    import { bar } from "./js/bar.js?v=95";
+    import { WORK, PROJECTS } from "./js/work.js?v=99";
+    import { bar } from "./js/bar.js?v=99";
+    import { asciiBackdrop } from "./js/bg.js?v=99";
+    asciiBackdrop("about");
     bar();
     // ✏️ the roles and projects come from js/work.js
     const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));

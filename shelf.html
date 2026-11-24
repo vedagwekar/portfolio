@@ -69,10 +69,12 @@
   </div>
 
   <script type="module">
-    import { mountShelf } from "./js/shelf.js?v=95";
-    import { notebook } from "./js/notebook.js?v=95";
-    import { bar } from "./js/bar.js?v=95";
+    import { mountShelf } from "./js/shelf.js?v=99";
+    import { notebook } from "./js/notebook.js?v=99";
+    import { bar } from "./js/bar.js?v=99";
+    import { asciiBackdrop } from "./js/bg.js?v=99";
     history.scrollRestoration = "manual";
+    asciiBackdrop("shelf");
     bar();
     mountShelf(document.getElementById("shelf"));
     notebook();

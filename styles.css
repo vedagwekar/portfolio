@@ -6,6 +6,7 @@
   --sans: var(--main);
 }
 * { box-sizing: border-box; }
+.backdrop { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
 html { scroll-behavior: smooth; }
 html.reading { overflow: hidden; }
 /* the home page is one screen: no scrolling, no scrollbar, and navy (not cream) if the edge bounces */
