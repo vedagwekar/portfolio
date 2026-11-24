@@ -18,7 +18,7 @@ most of my life so far has been camel years. i carried grades and expectations a
 
 the easy thing would be to become a lion: to define myself against home and against the person people expected. i can feel how good that would feel for a while. it would also just be the dragon again, pointed the other way.
 
-the child already shows up in a few places. pickup basketball has it, once you stop thinking about the drills you ran. guitar has it when i stop following the tab and find something that wasn't written down. i'm hoping math can become one of those places, something i play with and not only something i carry toward a degree.
+what the child would look like for me is harder to say, and i think that's part of nietzsche's point. you can't plan your way into it, because following a plan, even one i wrote myself, puts me back in the camel's position. the child's values come out of what it makes, after it has made it. nietzsche calls this forgetting, and i used to read that as carelessness. now it reads to me as freedom from justifying every choice against what came before, which is the work the camel and the lion both spend their lives doing.
 
 so the question i'm taking with me is what i would make if i weren't carrying anything and weren't fighting anything. after that comes the harder one, whether i'd want to live it again.
 
