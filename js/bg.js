@@ -1,6 +1,7 @@
 // A quiet ascii texture behind every page except home, a different one on each page:
 //   about    - drifting haze, with a soft ripple every so often, like a ball bouncing somewhere off the page
 //   projects - a contour map scrolling slowly underneath, the way the ground looks from a drone
+//   shelf    - thin wisps rising, like smoke from a candle while you read
 // It's sparse, kept mostly to the edges of the screen so the middle stays clear for text,
 // and holds still for reduced motion. Add ?art=<name> to an address to try another page's texture.
 const CW = 14, CH = 20;
@@ -25,6 +26,7 @@ function noise(x, y, z) {
     mix(mix(h(0, 0, 1), h(1, 0, 1), u), mix(h(0, 1, 1), h(1, 1, 1), u), v), w);
 }
 const fbm = (x, y, z) => .6 * noise(x, y, z) + .3 * noise(x * 2.1, y * 2.1, z) + .1 * noise(x * 4.2, y * 4.2, z);
+const hashCell = (a, b) => { const s = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return s - Math.floor(s); };
 
 // how much of a scene shows at a cell: full at the sides, faint behind the text column in the middle
 function edges(cols) {
@@ -70,8 +72,25 @@ function contours(put, cols, rows, t) {
   }
 }
 
-const SCENES = { haze, contours };
-const PICK = { about: "haze", projects: "contours", shelf: "haze" };
+function wisps(put, cols, rows, t) {
+  const edge = edges(cols);
+  for (let r = 0; r < rows; r++) {
+    const rise = r / rows; // stronger near the bottom, thinning out as it climbs
+    for (let c = 0; c < cols; c++) {
+      const sway = Math.sin(r * .12 + t * .35 + c * .02) * 1.6;
+      const n = fbm(c * .11 + sway * .25, r * .035 + t * .12, t * .03); // stretched tall, so the threads run upward
+      // two thin threads, where the noise crosses two levels
+      const band = Math.min(Math.abs(n - .45), Math.abs(n - .56));
+      if (band > .022) continue;
+      const hot = band < .007 && hashCell(c, r) < .4;
+      const ch = "(|)"[Math.round(Math.cos(r * .12 + t * .35 + c * .02) + 1)];
+      put(c, r, hot ? "°" : ch, hot ? PURPLE : WHITE, (hot ? .5 : .28) * edge(c) * (.3 + .7 * rise));
+    }
+  }
+}
+
+const SCENES = { haze, contours, wisps };
+const PICK = { about: "haze", projects: "contours", shelf: "wisps" };
 
 export function asciiBackdrop(page) {
   if (document.documentElement.classList.contains("home")) return;
