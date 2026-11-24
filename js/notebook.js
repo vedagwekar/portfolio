@@ -92,7 +92,7 @@ async function openNote(id) {
     } catch { cache.set(id, "couldn't load this one."); }
   }
   const threads = (e.threads || []).map((t) => entries.find((x) => x.id === t)).filter(Boolean);
-  flow.innerHTML = `<header><small>${nice(e.date)} · ${typeOf(e)}</small>
+  flow.innerHTML = `<header><small>${nice(e.date)} · ${typeOf(e) === "essay" ? "mini essay" : typeOf(e)}</small>
       <h2 id="r-title">${esc(e.title)}</h2>${e.author ? `<p class="by">${esc(e.author)}</p>` : ""}</header>
     <div class="body">${md(cache.get(id))}</div>
     ${threads.length ? `<aside class="threads"><small>see also</small>${threads.map((t) => `<a href="#note/${t.id}">${esc(t.title)}</a>`).join("")}</aside>` : ""}
