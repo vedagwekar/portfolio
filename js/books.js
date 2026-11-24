@@ -20,7 +20,7 @@ export const ENTRIES = [
     date: "2026-11", threads: [],
     blurb: "why i started this notebook.",
   },
-  { kind: "book", type: "essay", id: "thus-spoke-zarathustra", title: "thus spoke zarathustra", author: "friedrich nietzsche", status: "read", date: "2026-08", threads: ["picture-of-dorian-gray"], blurb: "the camel, the lion and the child, read the summer before moving to waterloo." },
+  { kind: "book", type: "essay", id: "thus-spoke-zarathustra", title: "thus spoke zarathustra", author: "friedrich nietzsche", status: "read", date: "2026-08", threads: ["picture-of-dorian-gray"], blurb: "why the lion isn't the point, and what leaving calgary has to do with becoming a child." },
   { kind: "book", type: "essay", id: "count-of-monte-cristo", title: "the count of monte cristo", author: "alexandre dumas", status: "read", essay: false, date: "", threads: [], blurb: "no essay yet." },
   { kind: "book", type: "essay", id: "one-hundred-years-of-solitude", title: "one hundred years of solitude", author: "gabriel garcía márquez", status: "read", essay: false, date: "", threads: [], blurb: "no essay yet." },
   { kind: "book", type: "essay", id: "picture-of-dorian-gray", title: "the picture of dorian gray", author: "oscar wilde", status: "read", date: "2026-05", threads: ["thus-spoke-zarathustra"], blurb: "a self is the record of what you've done. dorian locked his in the attic." },
