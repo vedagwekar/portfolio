@@ -1,9 +1,9 @@
 // Draws the shelf of plain spines on /shelf: one spine per book read, wrapping onto a new shelf when a row is full.
 // A new line in js/books.js adds a spine. Passing `rows` instead fills that many shelves, with dashed placeholders
 // at the end.
-import { ENTRIES } from "./books.js?v=104";
-import { spine } from "./spines.js?v=104";
-import { esc, popup } from "./popup.js?v=104";
+import { ENTRIES } from "./books.js?v=105";
+import { spine } from "./spines.js?v=105";
+import { esc, popup } from "./popup.js?v=105";
 
 const SLOT = 46;   // 42px spine + 4px gap
 const all = ENTRIES.filter((e) => e.kind === "book" && e.title);
