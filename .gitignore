@@ -4,3 +4,4 @@ _old-site
 _old-flight-site
 scripts
 .DS_Store
+node_modules/

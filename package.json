@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Ved Agwekar's personal portfolio website",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 serve.py",
+    "test": "echo \"No tests specified\"",
+    "postinstall": "cp node_modules/@vercel/analytics/dist/index.mjs js/vendor-analytics.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vedagwekar/portfolio.git"
+  },
+  "keywords": ["portfolio", "personal-website"],
+  "author": "Ved Agwekar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vedagwekar/portfolio/issues"
+  },
+  "homepage": "https://github.com/vedagwekar/portfolio#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
