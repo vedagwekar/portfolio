@@ -1,5 +1,4 @@
 // The home page: the hero photo and the github grid.
-import { inject } from "@vercel/analytics";
 import { asciiHero } from "./hero.js?v=104";
 import { bar } from "./bar.js?v=104";
 import { githubGraph } from "./github.js?v=104";
@@ -30,7 +29,6 @@ function fitIntro() {
 }
 
 // ---------- boot ----------
-inject();
 bar();
 fitIntro();
 addEventListener("resize", fitIntro);
