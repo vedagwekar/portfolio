@@ -69,10 +69,12 @@
   </div>
 
   <script type="module">
+    import { inject } from "@vercel/analytics";
     import { mountShelf } from "./js/shelf.js?v=104";
     import { notebook } from "./js/notebook.js?v=104";
     import { bar } from "./js/bar.js?v=104";
     import { asciiBackdrop } from "./js/bg.js?v=104";
+    inject();
     history.scrollRestoration = "manual";
     asciiBackdrop("shelf");
     bar();
