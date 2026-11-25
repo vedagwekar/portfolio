@@ -54,9 +54,11 @@
   </main>
 
   <script type="module">
+    import { inject } from "@vercel/analytics";
     import { WORK, PROJECTS } from "./js/work.js?v=104";
     import { bar } from "./js/bar.js?v=104";
     import { asciiBackdrop } from "./js/bg.js?v=104";
+    inject();
     asciiBackdrop("about");
     bar();
     // ✏️ the roles and projects come from js/work.js
