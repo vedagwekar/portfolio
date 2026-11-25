@@ -1,0 +1,127 @@
+<!doctype html>
+<!-- source for /resume.pdf. rebuild with: resume/build.sh -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ved Agwekar - Resume</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
+<style>
+  @page { size: letter; margin: 0.42in 0.5in 0.36in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 10.4pt/1.2 "CMU Serif", "Latin Modern Roman", Georgia, serif; color: #000; }
+  a { color: inherit; text-decoration: none; }
+  u, .ul { text-decoration: underline; text-underline-offset: 1.5px; text-decoration-thickness: .5px; }
+  header { text-align: center; margin-bottom: 4pt; }
+  h1 { font-size: 24pt; font-weight: 700; letter-spacing: .2pt; line-height: 1.05; }
+  .contact { font-size: 9.8pt; margin-top: 2pt; }
+  .contact a { text-decoration: underline; text-underline-offset: 1.5px; text-decoration-thickness: .5px; }
+  h2 { font-size: 11.4pt; font-weight: 500; font-variant: small-caps; letter-spacing: .3pt; border-bottom: .6pt solid #000; margin: 7pt 0 4pt; padding-bottom: .5pt; }
+  .item { padding-left: 9pt; margin-bottom: 4.5pt; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+  .row b { font-weight: 700; }
+  .sub { font-style: italic; font-size: 9.8pt; }
+  ul { margin: 1.5pt 0 0 15pt; }
+  li { font-size: 9.8pt; line-height: 1.22; margin-bottom: .6pt; padding-left: 1pt; }
+  li::marker { font-size: 8pt; }
+  .tech { font-style: italic; font-weight: 400; }
+  .skills { padding-left: 9pt; font-size: 9.8pt; line-height: 1.3; }
+  .skills b { font-weight: 700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Ved Agwekar</h1>
+  <div class="contact">
+    <a href="mailto:vedagwekar@gmail.com">vedagwekar@gmail.com</a> |
+    <a href="https://vedagwekar.com">vedagwekar.com</a> |
+    <a href="https://www.linkedin.com/in/vedagwekar">linkedin.com/in/vedagwekar</a> |
+    <a href="https://github.com/vedagwekar">github.com/vedagwekar</a>
+  </div>
+</header>
+
+<h2>Education</h2>
+<div class="item">
+  <div class="row"><b>University of Waterloo</b><span>Waterloo, ON</span></div>
+  <div class="row sub"><span>Honours Bachelor of Mathematics, Co-op</span><span>Sept. 2026 – Apr. 2031</span></div>
+</div>
+
+<h2>Experience</h2>
+<div class="item">
+  <div class="row"><b>Embedded Flight Software Team Member</b><span>Nov. 2026 – Present</span></div>
+  <div class="row sub"><span>Waterloo Aerial Robotics Group (WARG)</span><span>Waterloo, ON</span></div>
+  <ul>
+    <li>Developing sensor drivers in C/C++ for ZeroPilot, WARG’s in-house autopilot for autonomous UAVs</li>
+    <li>Writing embedded C on STM32 microcontrollers: pin configuration from schematics, SPI, and PWM output</li>
+    <li>Shipping code through GitHub pull requests with peer review and Google Test unit tests</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><b>Perception &amp; Vision Team Member</b><span>Sept. 2026 – Present</span></div>
+  <div class="row sub"><span>Sustainable Physical AI Society (SPAIS)</span><span>Waterloo, ON</span></div>
+  <ul>
+    <li>Building vision for a strawberry-farm robot that maps weeds and flags crop-disease symptoms for growers</li>
+    <li>Developing a crop-vs-weed segmentation pipeline in PyTorch and OpenCV, evaluated on IoU and weed recall</li>
+    <li>Researching thermal and entropy signatures to detect ground frost early and automate frost sprinklers</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><b>Full Stack Developer</b><span>Sept. 2025 – Present</span></div>
+  <div class="row sub"><span>Youth Policy Council</span><span>Calgary, AB (Remote)</span></div>
+  <ul>
+    <li>Built and maintain <a class="ul" href="https://youthpolicycouncil.ca">youthpolicycouncil.ca</a> on my own in Next.js, TypeScript, and Tailwind, from design to deployment</li>
+    <li>Designed a Supabase (PostgreSQL) back end for registrations and analytics, with an admin dashboard</li>
+    <li>Wrote 190+ Vitest and Playwright tests, including automated WCAG AA accessibility checks on every page</li>
+    <li>Set up CI/CD with GitHub Actions and Vercel: PRs must pass types, lint, tests, and build; merges auto-deploy</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+<div class="item">
+  <div class="row"><span><b>Squint</b> | <span class="tech">Python, OpenCV, ONNX, QNX, C, SwiftUI</span></span><span><a class="ul" href="https://github.com/dinud2/Squint">GitHub</a> | Nov. 2026</span></div>
+  <ul>
+    <li>Runner-up in the Sun Life health track at Hack Western 13 (team of 4): a counter-top assistant that stops double doses</li>
+    <li>Runs face, pill-bottle (MobileNetV3), and hand-to-mouth models offline on a Raspberry Pi 5 under QNX 8</li>
+    <li>Built the SwiftUI family app (alerts, widget, Siri) and the Python API behind it, with per-person routine tracking</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>Homeward</b> | <span class="tech">TypeScript, Node.js, Express, Rust (Soroban), Next.js</span></span><span><a class="ul" href="https://github.com/vedagwekar/homeward">GitHub</a> | Nov. 2026</span></div>
+  <ul>
+    <li>Technical lead and presenter (team of 4), Stellar Blockchain Challenge: escrow that pays home builders stage by stage</li>
+    <li>Built the Express API linking the Next.js app to a Soroban contract: role signing, stage codes, on-chain video hashes</li>
+    <li>Deployed live on Stellar Testnet (Vercel, Railway); CI runs 50 contract tests plus API and web checks on every PR</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>Lightning Response (Hackathon Winner)</b> | <span class="tech">Python, FastAPI, LightGBM</span></span><span><a class="ul" href="https://github.com/shan-d-louis/formulatechhacks">GitHub</a> | Sept. 2026</span></div>
+  <ul>
+    <li>Won the Ollon safety challenge at FormulaTech Hacks with a team of 4, building an AI pit wall for tyre safety</li>
+    <li>Trained LightGBM on 138,683 F1 laps, flagging lock-ups 0.5 s and wheelspin 1.75 s early at 0.96+ AUC</li>
+    <li>Cut the train–test gap from 0.15 to 0.05 with season splits; called Hamilton’s 2020 Silverstone failure 15 laps early</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>CETR Index</b> | <span class="tech">Python, pandas, SciPy, pytest</span></span><span><a class="ul" href="https://github.com/vedagwekar/cetr-index">GitHub</a> | June 2026 – Present</span></div>
+  <ul>
+    <li>Open-source pipeline scoring Canada’s 10 provinces on energy transition risk from StatCan and CER data</li>
+    <li>Tested the ranking across four normalization methods (Spearman ≥ 0.90), with 39 tests and GitHub Actions CI</li>
+  </ul>
+</div>
+
+<h2>Leadership</h2>
+<div class="item">
+  <div class="row"><span><b>Co-Secretary-General, WiseMUN III</b> | <span class="sub">Henry Wise Wood Model United Nations</span></span><span>May 2025 – Mar. 2026</span></div>
+</div>
+<div class="item">
+  <div class="row"><span><b>Co-Chapter Head &amp; VP of Technology</b> | <span class="sub">STEM Fellowship, Henry Wise Wood</span></span><span>June 2025 – June 2026</span></div>
+</div>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <div><b>Languages</b>: Python, C/C++, TypeScript, JavaScript, Rust, Swift, Java, SQL, HTML/CSS, Bash</div>
+  <div><b>Frameworks</b>: PyTorch, OpenCV, ONNX, Next.js, React, Node.js, Express, SwiftUI, FastAPI, pandas, LightGBM</div>
+  <div><b>Tools</b>: Git, GitHub Actions, Linux, QNX, STM32CubeIDE, Supabase, Vercel, Google Test, Vitest, Playwright, pytest</div>
+  <div><b>Interests</b>: Basketball, guitar, anime, philosophy, geopolitics</div>
+</div>
+</body>
+</html>
